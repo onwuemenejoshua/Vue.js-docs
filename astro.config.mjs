@@ -29,6 +29,10 @@ export default defineConfig({
               slug: "essentials/application",
             },
             { label: "Template Syntax", slug: "essentials/template" },
+            {
+              label: "Reactivity Fundamentals",
+              slug: "essentials/reactivity",
+            },
           ],
         },
       ],
