@@ -1,0 +1,8 @@
+.hero .actions a:first-child {
+  background-color: green; /* Green color */
+  color: white;
+}
+
+.site-title {
+  color: green;
+}
