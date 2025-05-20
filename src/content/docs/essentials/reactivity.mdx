@@ -10,3 +10,29 @@ import { Aside } from "@astrojs/starlight/components";
 This page and many other chapters later in the guide contain different content for the Options API and the Composition API. Your current preference is Composition API. You can toggle between the API styles using the "API Preference" switches at the top of the left sidebar.
 
 </Aside>
+
+## Declaring Reactive State
+
+### ref()
+
+In Composition API, the recommended way to declare reactive state is using the [`ref`](https://vuejs.org/api/reactivity-core.html#ref) function:
+
+```js
+import { ref } from 'vue'
+
+const count = ref(0)
+```
+
+`ref()` takes the argument and returns it wrapped within a ref object with a `.value` property:
+
+```js
+const count = ref(0)
+
+console.log(count) // { value: 0 }
+console.log(count.value) // 0
+
+count.value++
+console.log(count.value) // 1
+```
+
+> See also: [Typing Refs](https://vuejs.org/guide/typescript/composition-api.html#typing-ref) <sup>TS</sup>
