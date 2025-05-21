@@ -40,6 +40,23 @@ export default defineConfig({
             },
           ],
         },
+        {
+          label: "Components In-Depth",
+          items: [
+            {
+              label: "Component Registration",
+              slug: "components/registration",
+            },
+            {
+              label: "Props",
+              slug: "components/props",
+            },
+            {
+              label: "Component Events",
+              slug: "components/events",
+            },
+          ],
+        },
       ],
     }),
   ],
