@@ -23,7 +23,6 @@ The mustache tag will be replaced with the value of the `msg` property [from the
 
 The double mustaches interpret the data as plain text, not HTML. In order to output real HTML, you will need to use the `v-html` [directive](https://vuejs.org/api/built-in-directives.html#v-html):
 
-
 ```html
 <p>Using text interpolation: {{ rawHtml }}</p>
 <p>Using v-html directive: <span v-html="rawHtml"></span></p>
@@ -38,6 +37,7 @@ import { Aside } from "@astrojs/starlight/components";
 <Aside type="caution" title="Security Warning">
 
 Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS vulnerabilities](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use `v-html` on trusted content and never on user-provided content.
+
 </Aside>
 
 ## Attribute Bindings​
@@ -64,8 +64,8 @@ Attributes that start with `:` may look a bit different from normal HTML, but it
 
 ### Same-name Shorthand​
 
-* Only supported in 3.4+
-  
+- Only supported in 3.4+
+
 If the attribute has the same name as the variable name of the JavaScript value being bound, the syntax can be further shortened to omit the attribute value:
 
 ```html
@@ -96,10 +96,10 @@ If you have a JavaScript object representing multiple attributes that looks like
 
 ```js
 const objectOfAttrs = {
-  id: 'container',
-  class: 'wrapper',
-  style: 'background-color:green'
-}
+  id: "container",
+  class: "wrapper",
+  style: "background-color:green",
+};
 ```
 
 You can bind them to a single element by using `v-bind` without an argument:
@@ -113,11 +113,8 @@ You can bind them to a single element by using `v-bind` without an argument:
 So far we've only been binding to simple property keys in our templates. But Vue actually supports the full power of JavaScript expressions inside all data bindings:
 
 ```html
-{{ number + 1 }}
-
-{{ ok ? 'YES' : 'NO' }}
-
-{{ message.split('').reverse().join('') }}
+{{ number + 1 }} {{ ok ? 'YES' : 'NO' }} {{ message.split('').reverse().join('')
+}}
 
 <div :id="`list-${id}`"></div>
 ```
@@ -126,15 +123,14 @@ These expressions will be evaluated as JavaScript in the data scope of the curre
 
 In Vue templates, JavaScript expressions can be used in the following positions:
 
-* Inside text interpolations (mustaches)
-* In the attribute value of any Vue directives (special attributes that start with `v-`)
+- Inside text interpolations (mustaches)
+- In the attribute value of any Vue directives (special attributes that start with `v-`)
 
 ### Expressions Only
 
 Each binding can only contain one single expression. An expression is a piece of code that can be evaluated to a value. A simple check is whether it can be used after `return`.
 
 Therefore, the following will NOT work:
-
 
 ```html
 <!-- this is a statement, not an expression: -->
@@ -155,9 +151,10 @@ It is possible to call a component-exposed method inside a binding expression:
 ```
 
 <Aside style="tip" title="TIP">
-Functions called inside binding expressions will be called every time the component updates, so they should not have any side effects, such as changing data or triggering asynchronous operations.
+  Functions called inside binding expressions will be called every time the
+  component updates, so they should not have any side effects, such as changing
+  data or triggering asynchronous operations.
 </Aside>
-
 
 ### Restricted Globals Access​
 
@@ -264,7 +261,4 @@ You'll see other examples of modifiers later, [for](https://vuejs.org/guide/esse
 
 And finally, here's the full directive syntax visualized:
 
-<img
-    src="/src/assets/Image/VisualizedTemplate.png"
-    alt="Visualized template"
-  />
+<img src="/src/assets/VisualizedTemplate.png" alt="Visualized template" />

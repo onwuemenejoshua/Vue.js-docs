@@ -8,7 +8,7 @@ export default defineConfig({
     starlight({
       title: "Vue.js",
       customCss: ["./src/styles/custom.css"],
-      logo: { src: "./src/assets/Image/Vue.js.svg" },
+      logo: { src: "./src/assets/Vue.js.svg" },
       social: [
         { icon: "github", label: "GitHub", href: "https://github.com/vuejs/" },
       ],
@@ -32,6 +32,11 @@ export default defineConfig({
             {
               label: "Reactivity Fundamentals",
               slug: "essentials/reactivity",
+            },
+            { label: "Computed Properties", slug: "essentials/computed" },
+            {
+              label: "Class and Style Bindings",
+              slug: "essentials/class-and-style",
             },
           ],
         },
