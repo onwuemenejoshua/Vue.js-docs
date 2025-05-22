@@ -1,0 +1,27 @@
+---
+let x = 0;
+let y = 0;
+---
+
+<div class="mouse-position">
+  <p>Mouse position is at: <span id="x-coord">{x}</span>, <span id="y-coord">{y}</span></p>
+</div>
+
+<script>
+  document.addEventListener('mousemove', (event) => {
+    const xCoord = document.getElementById('x-coord');
+    const yCoord = document.getElementById('y-coord');
+    xCoord.textContent = event.clientX;
+    yCoord.textContent = event.clientY;
+  });
+</script>
+
+<style>
+  .mouse-position {
+    padding: 1rem;
+    background-color: var(--sl-color-bg);
+    color: var(--sl-color-text);
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+</style>

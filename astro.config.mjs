@@ -65,6 +65,27 @@ export default defineConfig({
             },
           ],
         },
+        {
+          label: "Reusability",
+          items: [
+            { label: "Composables", slug: "reusability/composable" },
+            {
+              label: "Custom Directives",
+              slug: "reusability/custom-directive",
+            },
+            {
+              label: "Plugins",
+              slug: "reusability/plugins",
+            },
+          ],
+        },
+        {
+          label: "Built-in Components",
+          items: [
+            { label: "Transition", slug: "builts-in/transition" },
+            { label: "TransitionGroup", slug: "builts-in/transition-group" },
+          ],
+        },
       ],
     }),
   ],
