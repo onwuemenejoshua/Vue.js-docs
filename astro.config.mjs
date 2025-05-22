@@ -55,6 +55,14 @@ export default defineConfig({
               label: "Component Events",
               slug: "components/events",
             },
+            {
+              label: "Component v-model",
+              slug: "components/v-model",
+            },
+            {
+              label: "Fallthrough Attributes",
+              slug: "components/attribute",
+            },
           ],
         },
       ],
