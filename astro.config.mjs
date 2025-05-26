@@ -84,6 +84,9 @@ export default defineConfig({
           items: [
             { label: "Transition", slug: "builts-in/transition" },
             { label: "TransitionGroup", slug: "builts-in/transition-group" },
+            { label: "Keep Alive", slug: "builts-in/keep-alive" },
+            { label: "Teleport", slug: "builts-in/teleport" },
+            { label: "Suspense", slug: "builts-in/suspense" },
           ],
         },
       ],
