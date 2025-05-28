@@ -7,7 +7,7 @@ Vue uses an HTML-based template syntax that allows you to declaratively bind the
 
 Under the hood, Vue compiles the templates into highly-optimized JavaScript code. Combined with the reactivity system, Vue can intelligently figure out the minimal number of components to re-render and apply the minimal amount of DOM manipulations when the app state changes.
 
-If you are familiar with Virtual DOM concepts and prefer the raw power of JavaScript, you can also [directly write render functions](https://vuejs.org/guide/extras/render-function.html) instead of templates, with optional JSX support. However, do note that they do not enjoy the same level of compile-time optimizations as templates.
+If you are familiar with Virtual DOM concepts and prefer the raw power of JavaScript, you can also <span class="custom-link">[directly write render functions](https://vuejs.org/guide/extras/render-function.html)</span> instead of templates, with optional JSX support. However, do note that they do not enjoy the same level of compile-time optimizations as templates.
 
 ## Text Interpolation​
 
@@ -17,11 +17,11 @@ The most basic form of data binding is text interpolation using the "Mustache" s
 <span>Message: {{ msg }}</span>
 ```
 
-The mustache tag will be replaced with the value of the `msg` property [from the corresponding component instance](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#declaring-reactive-state). It will also be updated whenever the `msg` property changes.
+The mustache tag will be replaced with the value of the `msg` property <span class="custom-link">[from the corresponding component instance](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#declaring-reactive-state)</span>. It will also be updated whenever the `msg` property changes.
 
 ## Raw HTML
 
-The double mustaches interpret the data as plain text, not HTML. In order to output real HTML, you will need to use the `v-html` [directive](https://vuejs.org/api/built-in-directives.html#v-html):
+The double mustaches interpret the data as plain text, not HTML. In order to output real HTML, you will need to use the `v-html` <span class="custom-link">[directive](https://vuejs.org/api/built-in-directives.html#v-html)</span>:
 
 ```html
 <p>Using text interpolation: {{ rawHtml }}</p>
@@ -36,13 +36,13 @@ import { Aside } from "@astrojs/starlight/components";
 
 <Aside type="caution" title="Security Warning">
 
-Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS vulnerabilities](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use `v-html` on trusted content and never on user-provided content.
+Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to <span class="custom-link">[XSS vulnerabilities](https://en.wikipedia.org/wiki/Cross-site_scripting)</span>. Only use `v-html` on trusted content and never on user-provided content.
 
 </Aside>
 
 ## Attribute Bindings​
 
-Mustaches cannot be used inside HTML attributes. Instead, use a [`v-bind` directive](https://vuejs.org/api/built-in-directives.html#v-bind):
+Mustaches cannot be used inside HTML attributes. Instead, use a <span class="custom-link">[`v-bind` directive](https://vuejs.org/api/built-in-directives.html#v-bind)</span>:
 
 ```html
 <div v-bind:id="dynamicId"></div>
@@ -80,7 +80,10 @@ This is similar to the property shorthand syntax when declaring objects in JavaS
 
 ### Boolean Attributes
 
-[Boolean attributes](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes) are attributes that can indicate true / false values by their presence on an element. For example, `disabled` is one of the most commonly used boolean attributes.
+[Boolean
+attributes](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes)
+are attributes that can indicate true / false values by their presence on
+an element. For example, `disabled` is one of the most commonly used boolean attributes.
 
 `v-bind` works a bit differently in this case:
 
@@ -88,7 +91,7 @@ This is similar to the property shorthand syntax when declaring objects in JavaS
 <button :disabled="isButtonDisabled">Button</button>
 ```
 
-The `disabled` attribute will be included if `isButtonDisabled` has a [truthy value](https://developer.mozilla.org/en-US/docs/Glossary/Truthy). It will also be included if the value is an empty string, maintaining consistency with `<button disabled="">`. For other [falsy values](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) the attribute will be omitted.
+The `disabled` attribute will be included if `isButtonDisabled` has a <span class="custom-link">[truthy value](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)</span>. It will also be included if the value is an empty string, maintaining consistency with `<button disabled="">`. For other <span class="custom-link">[falsy values](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)</span> the attribute will be omitted.
 
 ### Dynamically Binding Multiple Attributes​
 
@@ -158,15 +161,15 @@ It is possible to call a component-exposed method inside a binding expression:
 
 ### Restricted Globals Access​
 
-Template expressions are sandboxed and only have access to a [restricted list of globals](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsAllowList.ts#L3). The list exposes commonly used built-in globals such as `Math` and `Date`.
+Template expressions are sandboxed and only have access to a <span class="custom-link">[restricted list of globals](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsAllowList.ts#L3)</span>. The list exposes commonly used built-in globals such as `Math` and `Date`.
 
-Globals not explicitly included in the list, for example user-attached properties on `window`, will not be accessible in template expressions. You can, however, explicitly define additional globals for all Vue expressions by adding them to [`app.config.globalProperties`](https://vuejs.org/api/application.html#app-config-globalproperties).
+Globals not explicitly included in the list, for example user-attached properties on `window`, will not be accessible in template expressions. You can, however, explicitly define additional globals for all Vue expressions by adding them to <span class="custom-link">[`app.config.globalProperties`](https://vuejs.org/api/application.html#app-config-globalproperties)</span>.
 
 ## Directives​
 
-Directives are special attributes with the v- prefix. Vue provides a number of [built-in directives](https://vuejs.org/api/built-in-directives.html), including `v-html` and `v-bind` which we have introduced above.
+Directives are special attributes with the v- prefix. Vue provides a number of <span class="custom-link">[built-in directives](https://vuejs.org/api/built-in-directives.html)</span>, including `v-html` and `v-bind` which we have introduced above.
 
-Directive attribute values are expected to be single JavaScript expressions (with the exception of `v-for`, `v-on` and `v-slot`, which will be discussed in their respective sections later). A directive's job is to reactively apply updates to the DOM when the value of its expression changes. Take [`v-if`](https://vuejs.org/api/built-in-directives.html#v-if) as an example:
+Directive attribute values are expected to be single JavaScript expressions (with the exception of `v-for`, `v-on` and `v-slot`, which will be discussed in their respective sections later). A directive's job is to reactively apply updates to the DOM when the value of its expression changes. Take <span class="custom-link">[`v-if`](https://vuejs.org/api/built-in-directives.html#v-if)</span> as an example:
 
 ```html
 <p v-if="seen">Now you see me</p>
@@ -239,7 +242,7 @@ Dynamic argument expressions have some syntax constraints because certain charac
 <a :['foo' + bar]="value"> ... </a>
 ```
 
-If you need to pass a complex dynamic argument, it's probably better to use a [computed property](https://vuejs.org/guide/essentials/computed), which we will cover shortly.
+If you need to pass a complex dynamic argument, it's probably better to use a <span class="custom-link">[computed property](https://vuejs.org/guide/essentials/computed)</span>, which we will cover shortly.
 
 When using in-DOM templates (templates directly written in an HTML file), you should also avoid naming keys with uppercase characters, as browsers will coerce attribute names into lowercase:
 
@@ -257,7 +260,7 @@ Modifiers are special postfixes denoted by a dot, which indicate that a directiv
 <form @submit.prevent="onSubmit">...</form>
 ```
 
-You'll see other examples of modifiers later, [for](https://vuejs.org/guide/essentials/event-handling.html#event-modifiers) [`v-on`](https://vuejs.org/guide/essentials/event-handling.html#event-modifiers) and [for](https://vuejs.org/guide/essentials/forms.html#modifiers) [`v-model`](https://vuejs.org/guide/essentials/forms.html#modifiers), when we explore those features.
+You'll see other examples of modifiers later, <span class="custom-link">[for](https://vuejs.org/guide/essentials/event-handling.html#event-modifiers)</span> <span class="custom-link">[`v-on`](https://vuejs.org/guide/essentials/event-handling.html#event-modifiers)</span> and <span class="custom-link">[for](https://vuejs.org/guide/essentials/forms.html#modifiers)</span> <span class="custom-link">[`v-model`](https://vuejs.org/guide/essentials/forms.html#modifiers)</span>, when we explore those features.
 
 And finally, here's the full directive syntax visualized:
 

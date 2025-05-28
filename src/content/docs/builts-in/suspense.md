@@ -33,7 +33,7 @@ There are two types of async dependencies that `<Suspense>` can wait on:
 
 1. Components with an async `setup()` hook. This includes components using `<script setup>` with top-level `await` expressions.
 
-2. <a href="https://vuejs.org/guide/components/async" style="color: green; text-decoration: none;"> Async Components </a>
+2. <span class="custom-link"><a href="https://vuejs.org/guide/components/async" style="color: green; text-decoration: none;"> Async Components </a></span>
 
 
 ### async setup()​
@@ -109,14 +109,14 @@ The events could be used, for example, to show a loading indicator in front of t
 ## Error Handling​
 
 `<Suspense>` currently does not provide error handling via the component itself - however, you can use the
-<a href="https://vuejs.org/api/options-lifecycle.html#errorcaptured" style="color: green; text-decoration: none;"> `errorCaptured` </a> option or the <a href="https://vuejs.org/api/composition-api-lifecycle.html#onerrorcaptured" style="color: green; text-decoration: none;"> `onErrorCaptured()` </a> hook to capture and handle async errors in the parent component of `<Suspense>`.
+<span class="custom-link"><a href="https://vuejs.org/api/options-lifecycle.html#errorcaptured" style="color: green; text-decoration: none;"> `errorCaptured` </a></span> option or the <span class="custom-link"><a href="https://vuejs.org/api/composition-api-lifecycle.html#onerrorcaptured" style="color: green; text-decoration: none;"> `onErrorCaptured()` </a></span> hook to capture and handle async errors in the parent component of `<Suspense>`.
 
 
 ## Combining with Other Components​
 
-It is common to want to use `<Suspense>` in combination with the <a href="https://vuejs.org/guide/built-ins/transition.html" style="color: green; text-decoration: none;">`<Transition>`</a> and <a href="https://vuejs.org/guide/built-ins/keep-alive.html" style="color: green; text-decoration: none;">`<KeepAlive>` </a> components. The nesting order of these components is important to get them all working correctly.
+It is common to want to use `<Suspense>` in combination with the <span class="custom-link"><a href="https://vuejs.org/guide/built-ins/transition.html" style="color: green; text-decoration: none;">`<Transition>`</a></span> and <span class="custom-link"><a href="https://vuejs.org/guide/built-ins/keep-alive.html" style="color: green; text-decoration: none;">`<KeepAlive>` </a></span> components. The nesting order of these components is important to get them all working correctly.
 
-In addition, these components are often used in conjunction with the `<RouterView>` component from <a href="https://router.vuejs.org/" style="color: green; text-decoration: none;"> Vue Router. </a>
+In addition, these components are often used in conjunction with the `<RouterView>` component from <span class="custom-link"><a href="https://router.vuejs.org/" style="color: green; text-decoration: none;"> Vue Router. </a></span>
 
 The following example shows how to nest these components so that they all behave as expected. For simpler combinations you can remove the components that you don't need:
 
@@ -141,7 +141,7 @@ The following example shows how to nest these components so that they all behave
 ```
 
 
-Vue Router has built-in support for <a href="https://router.vuejs.org/guide/advanced/lazy-loading.html" style="color: green; text-decoration: none;" >lazily loading components</a> using dynamic imports. These are distinct from async components and currently they will not trigger `<Suspense>`. However, they can still have async components as descendants and those can trigger `<Suspense>` in the usual way.
+Vue Router has built-in support for <span class="custom-link"><a href="https://router.vuejs.org/guide/advanced/lazy-loading.html" style="color: green; text-decoration: none;" >lazily loading components</a></span> using dynamic imports. These are distinct from async components and currently they will not trigger `<Suspense>`. However, they can still have async components as descendants and those can trigger `<Suspense>` in the usual way.
 
 
 ## Nested Suspense​
@@ -179,4 +179,4 @@ If you don't set the `suspensible` prop, the inner `<Suspense>` will be treated 
 
 ## Related
 
-* <a href="https://vuejs.org/api/built-in-components.html#suspense" style="color: green; text-decoration: none;" >`<Suspense>` API reference</a>
+* <span class="custom-link"><a href="https://vuejs.org/api/built-in-components.html#suspense" style="color: green; text-decoration: none;" >`<Suspense>` API reference</a></span>

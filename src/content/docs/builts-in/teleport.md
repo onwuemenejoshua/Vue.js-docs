@@ -4,7 +4,7 @@ description: This page provides an overview of the Vue.js <Teleport> component
 ---
 
 
-[Watch a free video lesson on Vue School](https://vueschool.io/lessons/vue-3-teleport?friend=vuejs)
+<span class="custom-link">[Watch a free video lesson on Vue School](https://vueschool.io/lessons/vue-3-teleport?friend=vuejs)</span>
 
 
 `<Teleport>` is a built-in component that allows us to "teleport" a part of a component's template into a DOM node that exists outside the DOM hierarchy of that component.
@@ -92,7 +92,7 @@ The `to` target of `<Teleport>` expects a CSS selector string or an actual DOM n
 
 You can click the button below and inspect the `<body>` tag via your browser's devtools:
 
-You can combine `<Teleport>` with [`<Transition>`](/builts-in/transition/) to create animated modals - see [Example here](https://vuejs.org/examples/#modal).
+You can combine `<Teleport>` with <span class="custom-link">[`<Transition>`](/builts-in/transition/)</span> to create animated modals - see <span class="custom-link">[Example here](https://vuejs.org/examples/#modal)</span>.
 
 
 
@@ -163,5 +163,5 @@ Note that the target element must be rendered in the same mount / update tick wi
 
 ## Related
 
-* [`<Teleport>` API reference](https://vuejs.org/api/built-in-components.html#teleport)
-* [Handling Teleports in SSR](https://vuejs.org/guide/scaling-up/ssr.html#teleports)
+* <span class="custom-link">[`<Teleport>` API reference](https://vuejs.org/api/built-in-components.html#teleport)</span>
+* <span class="custom-link">[Handling Teleports in SSR](https://vuejs.org/guide/scaling-up/ssr.html#teleports)</span>

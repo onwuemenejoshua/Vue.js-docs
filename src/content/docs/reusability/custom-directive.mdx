@@ -7,7 +7,7 @@ description: The page provides an overview of custom directives in Vue.js
 
 In addition to the default set of directives shipped in core (like `v-model` or `v-show`), Vue also allows you to register your own custom directives.
 
-We have introduced two forms of code reuse in Vue: [components](https://vuejs.org/guide/essentials/component-basics.html) and [composables](/reusability/composable/). Components are the main building blocks, while composables are focused on reusing stateful logic. Custom directives, on the other hand, are mainly intended for reusing logic that involves low-level DOM access on plain elements.
+We have introduced two forms of code reuse in Vue: <span class="custom-link">[components](https://vuejs.org/guide/essentials/component-basics.html)</span> and <span class="custom-link">[composables](/reusability/composable/)</span>. Components are the main building blocks, while composables are focused on reusing stateful logic. Custom directives, on the other hand, are mainly intended for reusing logic that involves low-level DOM access on plain elements.
 
 A custom directive is defined as an object containing lifecycle hooks similar to those of a component. The hooks receive the element the directive is bound to. Here is an example of a directive that adds a class to an element when it is inserted into the DOM by Vue:
 
@@ -16,9 +16,9 @@ A custom directive is defined as an object containing lifecycle hooks similar to
 // enables v-highlight in templates
 const vHighlight = {
   mounted: (el) => {
-    el.classList.add('is-highlight')
-  }
-}
+    el.classList.add("is-highlight");
+  },
+};
 </script>
 
 <template>
@@ -39,20 +39,20 @@ export default {
     // enables v-highlight in template
     highlight: {
       /* ... */
-    }
-  }
-}
+    },
+  },
+};
 ```
 
 It is also common to globally register custom directives at the app level:
 
 ```js
-const app = createApp({})
+const app = createApp({});
 
 // make v-highlight usable in all components
-app.directive('highlight', {
+app.directive("highlight", {
   /* ... */
-})
+});
 ```
 
 ## When to use custom directives​
@@ -65,8 +65,8 @@ A common example of this is a `v-focus` custom directive that brings an element 
 <script setup>
 // enables v-focus in templates
 const vFocus = {
-  mounted: (el) => el.focus()
-}
+  mounted: (el) => el.focus(),
+};
 </script>
 
 <template>
@@ -102,33 +102,33 @@ const myDirective = {
   // called before the parent component is unmounted
   beforeUnmount(el, binding, vnode) {},
   // called when the parent component is unmounted
-  unmounted(el, binding, vnode) {}
-}
+  unmounted(el, binding, vnode) {},
+};
 ```
-
 
 ### Hook Arguments​
 
 Directive hooks are passed these arguments:
 
-* `el`: the element the directive is bound to. This can be used to directly manipulate the DOM.
+- `el`: the element the directive is bound to. This can be used to directly manipulate the DOM.
 
-* binding: an object containing the following properties.
+- binding: an object containing the following properties.
 
-    * `value`: The value passed to the directive. For example in `v-my-directive="1 + 1"`, the value would be `2`.
-    * `oldValue`: The previous value, only available in `beforeUpdate` and `updated`. It is available whether or not the value has changed.
-    * `arg`: The argument passed to the directive, if any. For example in `v-my-directive:foo`, the arg would be `"foo"`.
-    * `modifiers`: An object containing modifiers, if any. For example in v-my-directive.foo.bar, the modifiers object would be `{ foo: true, bar: true }`.
-    * `instance`: The instance of the component where the directive is used.
-    * `dir`: the directive definition object.
-* `vnode`: the underlying VNode representing the bound element.
+  - `value`: The value passed to the directive. For example in `v-my-directive="1 + 1"`, the value would be `2`.
+  - `oldValue`: The previous value, only available in `beforeUpdate` and `updated`. It is available whether or not the value has changed.
+  - `arg`: The argument passed to the directive, if any. For example in `v-my-directive:foo`, the arg would be `"foo"`.
+  - `modifiers`: An object containing modifiers, if any. For example in v-my-directive.foo.bar, the modifiers object would be `{ foo: true, bar: true }`.
+  - `instance`: The instance of the component where the directive is used.
+  - `dir`: the directive definition object.
 
-* `prevVnode`: the VNode representing the bound element from the previous render. Only available in the `beforeUpdate` and `updated` hooks.
+- `vnode`: the underlying VNode representing the bound element.
+
+- `prevVnode`: the VNode representing the bound element from the previous render. Only available in the `beforeUpdate` and `updated` hooks.
 
 As an example, consider the following directive usage:
 
 ```html
-<div v-example:foo.bar="baz">
+<div v-example:foo.bar="baz"></div>
 ```
 
 The `binding` argument would be an object in the shape of:
@@ -148,16 +148,15 @@ Similar to built-in directives, custom directive arguments can be dynamic. For e
 <div v-example:[arg]="value"></div>
 ```
 
-
 Here the directive argument will be reactively updated based on `arg` property in our component state.
 
-import { Aside } from '@astrojs/starlight/components';
+import { Aside } from "@astrojs/starlight/components";
 
 <Aside type="note" title="Note">
 
-Apart from `el`, you should treat these arguments as read-only and never modify them. If you need to share information across hooks, it is recommended to do so through element's [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset).
-</Aside>
+Apart from `el`, you should treat these arguments as read-only and never modify them. If you need to share information across hooks, it is recommended to do so through element's <span class="custom-link">[dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset)</span>.
 
+</Aside>
 
 ## Function Shorthand​
 
@@ -168,10 +167,10 @@ It's common for a custom directive to have the same behavior for `mounted` and `
 ```
 
 ```js
-app.directive('color', (el, binding) => {
+app.directive("color", (el, binding) => {
   // this will be called for both `mounted` and `updated`
-  el.style.color = binding.value
-})
+  el.style.color = binding.value;
+});
 ```
 
 ## Object Literals​
@@ -183,21 +182,20 @@ If your directive needs multiple values, you can also pass in a JavaScript objec
 ```
 
 ```js
-app.directive('demo', (el, binding) => {
-  console.log(binding.value.color) // => "white"
-  console.log(binding.value.text) // => "hello!"
-})
+app.directive("demo", (el, binding) => {
+  console.log(binding.value.color); // => "white"
+  console.log(binding.value.text); // => "hello!"
+});
 ```
 
 ## Usage on Components
 
 <Aside type="caution" title="Not recommended">
-Using custom directives on components is not recommended. Unexpected behaviour may occur when a component has multiple root nodes.
+  Using custom directives on components is not recommended. Unexpected behaviour
+  may occur when a component has multiple root nodes.
 </Aside>
 
-
-When used on components, custom directives will always apply to a component's root node, similar to [Fallthrough Attributes](/components/attribute/).
-
+When used on components, custom directives will always apply to a component's root node, similar to <span class="custom-link">[Fallthrough Attributes](/components/attribute/)</span>.
 
 ```html
 <MyComponent v-demo="test" />
@@ -206,7 +204,8 @@ When used on components, custom directives will always apply to a component's ro
 ```html
 <!-- template of MyComponent -->
 
-<div> <!-- v-demo directive will be applied here -->
+<div>
+  <!-- v-demo directive will be applied here -->
   <span>My component content</span>
 </div>
 ```

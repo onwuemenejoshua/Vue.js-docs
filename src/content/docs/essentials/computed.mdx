@@ -3,9 +3,10 @@ title: Computed Properties
 description: This page provides an overview of computed properties in Vue.js, demonstrating their usage and advantages in managing reactive data.
 ---
 
-
-[Watch a free video lesson on Vue School](https://vueschool.io/lessons/vue-fundamentals-capi-computed-properties-in-vue-with-the-composition-api?friend=vuejs)
-
+<span class="custom-link">
+  [Watch a free video lesson on Vue
+  School](https://vueschool.io/lessons/vue-fundamentals-capi-computed-properties-in-vue-with-the-composition-api?friend=vuejs)
+</span>
 
 ## Basic Example​
 
@@ -13,13 +14,13 @@ In-template expressions are very convenient, but they are meant for simple opera
 
 ```js
 const author = reactive({
-  name: 'John Doe',
+  name: "John Doe",
   books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
+    "Vue 2 - Advanced Guide",
+    "Vue 3 - Basic Guide",
+    "Vue 4 - The Mystery",
+  ],
+});
 ```
 
 And we want to display different messages depending on if `author` already has some books or not:
@@ -35,21 +36,21 @@ That's why for complex logic that includes reactive data, it is recommended to u
 
 ```vue
 <script setup>
-import { reactive, computed } from 'vue'
+import { reactive, computed } from "vue";
 
 const author = reactive({
-  name: 'John Doe',
+  name: "John Doe",
   books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
+    "Vue 2 - Advanced Guide",
+    "Vue 3 - Basic Guide",
+    "Vue 4 - The Mystery",
+  ],
+});
 
 // a computed ref
 const publishedBooksMessage = computed(() => {
-  return author.books.length > 0 ? 'Yes' : 'No'
-})
+  return author.books.length > 0 ? "Yes" : "No";
+});
 </script>
 
 <template>
@@ -58,13 +59,16 @@ const publishedBooksMessage = computed(() => {
 </template>
 ```
 
-[Try it in the Playground](https://play.vuejs.org/#eNp1kE9Lw0AQxb/KI5dtoTainkoaaREUoZ5EEONhm0ybYLO77J9CCfnuzta0vdjbzr6Zeb95XbIwZroPlMySzJW2MR6OfDB5oZrWaOvRwZIsfbOnCUrdmuCpQo+N1S0ET4pCFarUynnI4GttMT9PjLpCAUq2NIN41bXCkyYxiZ9rrX/cDF/xDYiPQLjDDRbVXqqSHZ5DUw2tg3zP8lK6pvxHe2DtvSasDs6TPTAT8F2ofhzh0hTygm5pc+I1Yb1rXE3VMsKsyDm5JcY/9Y5GY8xzHI+wnIpVw4nTI/10R2rra+S4xSPEJzkBvvNNs310ztK/RDlLLjy1Zic9cQVkJn+R7gIwxJGlMXiWnZEq77orhH3Pq2NH9DjvTfpfSBSbmA==)
+<span class="custom-link">
+  [Try it in the
+  Playground](https://play.vuejs.org/#eNp1kE9Lw0AQxb/KI5dtoTainkoaaREUoZ5EEONhm0ybYLO77J9CCfnuzta0vdjbzr6Zeb95XbIwZroPlMySzJW2MR6OfDB5oZrWaOvRwZIsfbOnCUrdmuCpQo+N1S0ET4pCFarUynnI4GttMT9PjLpCAUq2NIN41bXCkyYxiZ9rrX/cDF/xDYiPQLjDDRbVXqqSHZ5DUw2tg3zP8lK6pvxHe2DtvSasDs6TPTAT8F2ofhzh0hTygm5pc+I1Yb1rXE3VMsKsyDm5JcY/9Y5GY8xzHI+wnIpVw4nTI/10R2rra+S4xSPEJzkBvvNNs310ztK/RDlLLjy1Zic9cQVkJn+R7gIwxJGlMXiWnZEq77orhH3Pq2NH9DjvTfpfSBSbmA==)
+</span>
 
-Here we have declared a computed property `publishedBooksMessage`. The `computed()` function expects to be passed a [getter function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description), and the returned value is a computed ref. Similar to normal refs, you can access the computed result as `publishedBooksMessage.value`. Computed refs are also auto-unwrapped in templates so you can reference them without `.value` in template expressions.
+Here we have declared a computed property `publishedBooksMessage`. The `computed()` function expects to be passed a <span class="custom-link">[getter function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description)</span>, and the returned value is a computed ref. Similar to normal refs, you can access the computed result as `publishedBooksMessage.value`. Computed refs are also auto-unwrapped in templates so you can reference them without `.value` in template expressions.
 
 A computed property automatically tracks its reactive dependencies. Vue is aware that the computation of `publishedBooksMessage` depends on `author.books`, so it will update any bindings that depend on `publishedBooksMessage` when `author.books` changes.
 
-> See also: [Typing Refs](https://vuejs.org/guide/typescript/composition-api#typing-computed) <sup>TS</sup>
+> See also: <span class="custom-link">[Typing Refs](https://vuejs.org/guide/typescript/composition-api#typing-computed)</span> <sup>TS</sup>
 
 ## Computed Caching vs. Methods
 
@@ -77,7 +81,7 @@ You may have noticed we can achieve the same result by invoking a method in the 
 ```js
 // in component
 function calculateBooksMessage() {
-  return author.books.length > 0 ? 'Yes' : 'No'
+  return author.books.length > 0 ? "Yes" : "No";
 }
 ```
 
@@ -86,7 +90,7 @@ Instead of a computed property, we can define the same function as a method. For
 This also means the following computed property will never update, because `Date.now()` is not a reactive dependency:
 
 ```js
-const now = computed(() => Date.now())
+const now = computed(() => Date.now());
 ```
 
 In comparison, a method invocation will always run the function whenever a re-render happens.
@@ -99,22 +103,22 @@ Computed properties are by default getter-only. If you attempt to assign a new v
 
 ```vue
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed } from "vue";
 
-const firstName = ref('John')
-const lastName = ref('Doe')
+const firstName = ref("John");
+const lastName = ref("Doe");
 
 const fullName = computed({
   // getter
   get() {
-    return firstName.value + ' ' + lastName.value
+    return firstName.value + " " + lastName.value;
   },
   // setter
   set(newValue) {
     // Note: we are using destructuring assignment syntax here.
-    [firstName.value, lastName.value] = newValue.split(' ')
-  }
-})
+    [firstName.value, lastName.value] = newValue.split(" ");
+  },
+});
 </script>
 ```
 
@@ -122,26 +126,26 @@ Now when you run `fullName.value = 'John Doe'`, the setter will be invoked and `
 
 ## Getting the Previous Value​
 
-* Only supported in 3.4+
-  
+- Only supported in 3.4+
+
 In case you need it, you can get the previous value returned by the computed property accessing the first argument of the getter:
 
 ```vue
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed } from "vue";
 
-const count = ref(2)
+const count = ref(2);
 
 // This computed will return the value of count when it's less or equal to 3.
 // When count is >=4, the last value that fulfilled our condition will be returned
 // instead until count is less or equal to 3
 const alwaysSmall = computed((previous) => {
   if (count.value <= 3) {
-    return count.value
+    return count.value;
   }
 
-  return previous
-})
+  return previous;
+});
 </script>
 ```
 
@@ -149,22 +153,22 @@ In case you're using a writable computed:
 
 ```vue
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed } from "vue";
 
-const count = ref(2)
+const count = ref(2);
 
 const alwaysSmall = computed({
   get(previous) {
     if (count.value <= 3) {
-      return count.value
+      return count.value;
     }
 
-    return previous
+    return previous;
   },
   set(newValue) {
-    count.value = newValue * 2
-  }
-})
+    count.value = newValue * 2;
+  },
+});
 </script>
 ```
 
@@ -172,7 +176,7 @@ const alwaysSmall = computed({
 
 ### Getters should be side-effect free​
 
-It is important to remember that computed getter functions should only perform pure computation and be free of side effects. For example, don't mutate other state, make async requests, or mutate the DOM inside a computed getter! Think of a computed property as declaratively describing how to derive a value based on other values - its only responsibility should be computing and returning that value. Later in the guide we will discuss how we can perform side effects in reaction to state changes with [watchers](https://vuejs.org/guide/essentials/watchers).
+It is important to remember that computed getter functions should only perform pure computation and be free of side effects. For example, don't mutate other state, make async requests, or mutate the DOM inside a computed getter! Think of a computed property as declaratively describing how to derive a value based on other values - its only responsibility should be computing and returning that value. Later in the guide we will discuss how we can perform side effects in reaction to state changes with <span class="custom-link">[watchers](https://vuejs.org/guide/essentials/watchers)</span>.
 
 ### Avoid mutating computed value​
 

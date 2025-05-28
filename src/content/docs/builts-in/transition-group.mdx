@@ -3,29 +3,27 @@ title: TransitionGroup
 description: This page provides information about the <TransitionGroup> component in Vue.js
 ---
 
-
 `<TransitionGroup>` is a built-in component designed for animating the insertion, removal, and order change of elements or components that are rendered in a list.
 
 ## Differences from `<Transition>​`
 
 `<TransitionGroup>` supports the same props, CSS transition classes, and JavaScript hook listeners as `<Transition>`, with the following differences:
 
-* By default, it doesn't render a wrapper element. But you can specify an element to be rendered with the `tag` prop.
+- By default, it doesn't render a wrapper element. But you can specify an element to be rendered with the `tag` prop.
 
-* [Transition modes](/builts-in/transition/#transition-modes) are not available, because we are no longer alternating between mutually exclusive elements.
+- [Transition modes](/builts-in/transition/#transition-modes) are not available, because we are no longer alternating between mutually exclusive elements.
 
-* Elements inside are always required to have a unique `key` attribute.
+- Elements inside are always required to have a unique `key` attribute.
 
-* CSS transition classes will be applied to individual elements in the list, not to the group / container itself.
+- CSS transition classes will be applied to individual elements in the list, not to the group / container itself.
 
-import { Aside } from '@astrojs/starlight/components';
+import { Aside } from "@astrojs/starlight/components";
 
 <Aside type="note" title="TIP">
 
-When used in [in-DOM templates](https://vuejs.org/guide/essentials/component-basics.html#in-dom-template-parsing-caveats), it should be referenced as `<transition-group>`.
+When used in <span class="custom-link">[in-DOM templates](https://vuejs.org/guide/essentials/component-basics.html#in-dom-template-parsing-caveats)</span>, it should be referenced as `<transition-group>`.
 
 </Aside>
-
 
 ## Enter / Leave Transitions​
 
@@ -33,9 +31,7 @@ Here is an example of applying enter / leave transitions to a `v-for` list using
 
 ```html
 <TransitionGroup name="list" tag="ul">
-  <li v-for="item in items" :key="item">
-    {{ item }}
-  </li>
+  <li v-for="item in items" :key="item">{{ item }}</li>
 </TransitionGroup>
 ```
 
@@ -50,7 +46,6 @@ Here is an example of applying enter / leave transitions to a `v-for` list using
   transform: translateX(30px);
 }
 ```
-
 
 ## Move Transitions​
 
@@ -78,13 +73,13 @@ The above demo has some obvious flaws: when an item is inserted or removed, its 
 
 Now it looks much better - even animating smoothly when the whole list is shuffled:
 
-[Full Example](https://vuejs.org/examples/#list-transition)
-
+<span class="custom-link">
+  [Full Example](https://vuejs.org/examples/#list-transition)
+</span>
 
 ## Custom TransitionGroup classes​
 
-You can also specify custom transition classes for the moving element by passing the `moveClass` prop to `<TransitionGroup>`, just like [custom transition classes on `<Transition>`](/builts-in/transition/#css-based-transitions).
-
+You can also specify custom transition classes for the moving element by passing the `moveClass` prop to `<TransitionGroup>`, just like <span class="custom-link">[custom transition classes on `<Transition>`](/builts-in/transition/#css-based-transitions)</span>.
 
 ## Staggering List Transitions​
 
@@ -98,32 +93,30 @@ By communicating with JavaScript transitions through data attributes, it's also 
   @enter="onEnter"
   @leave="onLeave"
 >
-  <li
-    v-for="(item, index) in computedList"
-    :key="item.msg"
-    :data-index="index"
-  >
+  <li v-for="(item, index) in computedList" :key="item.msg" :data-index="index">
     {{ item.msg }}
   </li>
 </TransitionGroup>
 ```
 
-Then, in JavaScript hooks, we animate the element with a delay based on the data attribute. This example is using the [GSAP library](https://gsap.com/) to perform the animation:
+Then, in JavaScript hooks, we animate the element with a delay based on the data attribute. This example is using the <span class="custom-link">[GSAP library](https://gsap.com/)</span> to perform the animation:
 
 ```js
 function onEnter(el, done) {
   gsap.to(el, {
     opacity: 1,
-    height: '1.6em',
+    height: "1.6em",
     delay: el.dataset.index * 0.15,
-    onComplete: done
-  })
+    onComplete: done,
+  });
 }
 ```
 
-[Full Example in the Playground](https://play.vuejs.org/#eNqlVMuu0zAQ/ZVRNklRm7QLWETtBW4FSFCxYkdYmGSSmjp28KNQVfl3xk7SFyvEponPGc+cOTPNOXrbdenRYZRHa1Nq3lkwaF33VEjedkpbOIPGeg6lajtnsYIeaq1aiOlSfAlqDOtG3L8SUchSSWNBcPrZwNdCAqVqTZND/KxdibBDjKGf3xIfWXngCNs9k4/Udu/KA3xWWnPz1zW0sOOP6CcnG3jv9ImIQn67SvrpUJ9IE/WVxPHsSkw97gbN0zFJZrB5grNPrskcLUNXac2FRZ0k3GIbIvxLSsVTq3bqF+otM5jMUi5L4So0SSicHplwOKOyfShdO1lariQo+Yy10vhO+qwoZkNFFKmxJ4Gp6ljJrRe+vMP3yJu910swNXqXcco1h0pJHDP6CZHEAAcAYMydwypYCDAkJRdX6Sts4xGtUDAKotIVs9Scpd4q/A0vYJmuXo5BSm7JOIEW81DVo77VR207ZEf8F23LB23T+X9VrbNh82nn6UAz7ASzSCeANZe0AnBctIqqbIoojLCIIBvoL5pJw31DH7Ry3VDKsoYinSii4ZyXxhBQM2Fwwt58D7NeoB8QkXfDvwRd2XtceOsCHkwc8KCINAk+vADJppQUFjZ0DsGVGT3uFn1KSjoPeKLoaYtvCO/rIlz3vH9O5FiU/nXny/pDT6YGKZngg0/Zg1GErrMbp6N5NHxJFi3N/4dRkj5IYf5ULxCmiPJpI4rIr4kHimhvbWfyLHOyOzQpNZZ57jXNy4nRGFLTR/0fWBqe7w==)
-
+<span class="custom-link">
+  [Full Example in the
+  Playground](https://play.vuejs.org/#eNqlVMuu0zAQ/ZVRNklRm7QLWETtBW4FSFCxYkdYmGSSmjp28KNQVfl3xk7SFyvEponPGc+cOTPNOXrbdenRYZRHa1Nq3lkwaF33VEjedkpbOIPGeg6lajtnsYIeaq1aiOlSfAlqDOtG3L8SUchSSWNBcPrZwNdCAqVqTZND/KxdibBDjKGf3xIfWXngCNs9k4/Udu/KA3xWWnPz1zW0sOOP6CcnG3jv9ImIQn67SvrpUJ9IE/WVxPHsSkw97gbN0zFJZrB5grNPrskcLUNXac2FRZ0k3GIbIvxLSsVTq3bqF+otM5jMUi5L4So0SSicHplwOKOyfShdO1lariQo+Yy10vhO+qwoZkNFFKmxJ4Gp6ljJrRe+vMP3yJu910swNXqXcco1h0pJHDP6CZHEAAcAYMydwypYCDAkJRdX6Sts4xGtUDAKotIVs9Scpd4q/A0vYJmuXo5BSm7JOIEW81DVo77VR207ZEf8F23LB23T+X9VrbNh82nn6UAz7ASzSCeANZe0AnBctIqqbIoojLCIIBvoL5pJw31DH7Ry3VDKsoYinSii4ZyXxhBQM2Fwwt58D7NeoB8QkXfDvwRd2XtceOsCHkwc8KCINAk+vADJppQUFjZ0DsGVGT3uFn1KSjoPeKLoaYtvCO/rIlz3vH9O5FiU/nXny/pDT6YGKZngg0/Zg1GErrMbp6N5NHxJFi3N/4dRkj5IYf5ULxCmiPJpI4rIr4kHimhvbWfyLHOyOzQpNZZ57jXNy4nRGFLTR/0fWBqe7w==)
+</span>
 
 ## Related
 
-* [`<TransitionGroup>` API reference](https://vuejs.org/api/built-in-components.html#transitiongroup)
+- <span class="custom-link">[`<TransitionGroup>` API reference](https://vuejs.org/api/built-in-components.html#transitiongroup)</span>

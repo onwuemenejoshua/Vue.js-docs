@@ -7,7 +7,7 @@ A common need for data binding is manipulating an element's class list and inlin
 
 ## Binding HTML Classes
 
-[Watch a free video lesson on Vue School](https://vueschool.io/lessons/vue-fundamentals-capi-dynamic-css-classes-with-vue?friend=vuejs)
+<span class="custom-link">[Watch a free video lesson on Vue School](https://vueschool.io/lessons/vue-fundamentals-capi-dynamic-css-classes-with-vue?friend=vuejs)</span>
 
 ### Binding to Objects​
 
@@ -17,7 +17,7 @@ We can pass an object to :class (short for v-bind:class) to dynamically toggle c
 <div :class="{ active: isActive }"></div>
 ```
 
-The above syntax means the presence of the `active` class will be determined by the [truthiness](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) of the data property `isActive`.
+The above syntax means the presence of the `active` class will be determined by the <span class="custom-link">[truthiness](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)</span> of the data property `isActive`.
 
 You can have multiple classes toggled by having more fields in the object. In addition, the `:class` directive can also co-exist with the plain `class` attribute. So given the following state:
 
@@ -62,7 +62,7 @@ This will render:
 <div class="active"></div>
 ```
 
-We can also bind to a [computed property](https://vuejs.org/guide/essentials/computed) that returns an object. This is a common and powerful pattern:
+We can also bind to a <span class="custom-link">[computed property](https://vuejs.org/guide/essentials/computed)</span> that returns an object. This is a common and powerful pattern:
 
 ```js
 const isActive = ref(true)
@@ -113,7 +113,7 @@ However, this can be a bit verbose if you have multiple conditional classes. Tha
 
 ### With Components
 
-> This section assumes knowledge of [Components](https://vuejs.org/guide/essentials/component-basics). Feel free to skip it and come back later.
+> This section assumes knowledge of <span class="custom-link">[Components](https://vuejs.org/guide/essentials/component-basics)</span>. Feel free to skip it and come back later.
 
 When you use the `class` attribute on a component with a single root element, those classes will be added to the component's root element and merged with any existing class already on it.
 
@@ -166,14 +166,14 @@ Will render:
 <span>This is a child component</span>
 ```
 
-You can learn more about component attribute inheritance in [Fallthrough Attributes](https://vuejs.org/guide/components/attrs) section.
+You can learn more about component attribute inheritance in <span class="custom-link">[Fallthrough Attributes](https://vuejs.org/guide/components/attrs)</span> section.
 
 
 ## Binding Inline Styles​
 
 ### Binding to Objects
 
-`:style` supports binding to JavaScript object values - it corresponds to an [HTML element's `style` property](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style):
+`:style` supports binding to JavaScript object values - it corresponds to an <span class="custom-link">[HTML element's `style` property](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)</span>:
 
 ```js
 const activeColor = ref('red')
@@ -227,7 +227,7 @@ We can bind `:style` to an array of multiple style objects. These objects will b
 
 ### Auto-prefixing​
 
-When you use a CSS property that requires a [vendor prefix](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) in `:style`, Vue will automatically add the appropriate prefix. Vue does this by checking at runtime to see which style properties are supported in the current browser. If the browser doesn't support a particular property then various prefixed variants will be tested to try to find one that is supported.
+When you use a CSS property that requires a <span class="custom-link">[vendor prefix](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix)</span> in `:style`, Vue will automatically add the appropriate prefix. Vue does this by checking at runtime to see which style properties are supported in the current browser. If the browser doesn't support a particular property then various prefixed variants will be tested to try to find one that is supported.
 
 ### Multiple Values​
 

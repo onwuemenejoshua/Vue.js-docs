@@ -17,7 +17,7 @@ app.use(myPlugin, {
 })
 ```
 
-A plugin is defined as either an object that exposes an `install()` method, or simply a function that acts as the install function itself. The install function receives the [app instance](https://vuejs.org/api/application.html) along with additional options passed to `app.use()`, if any:
+A plugin is defined as either an object that exposes an `install()` method, or simply a function that acts as the install function itself. The install function receives the <span class="custom-link">[app instance](https://vuejs.org/api/application.html)</span> along with additional options passed to `app.use()`, if any:
 
 ```js
 const myPlugin = {
@@ -29,18 +29,18 @@ const myPlugin = {
 
 There is no strictly defined scope for a plugin, but common scenarios where plugins are useful include:
 
-1. Register one or more global components or custom directives with [`app.component()`](https://vuejs.org/api/application.html#app-component) and [`app.directive()`](https://vuejs.org/api/application.html#app-directive).
+1. Register one or more global components or custom directives with <span class="custom-link">[`app.component()`](https://vuejs.org/api/application.html#app-component)</span> and <span class="custom-link">[`app.directive()`](https://vuejs.org/api/application.html#app-directive)</span>.
 
-2. Make a resource [injectable](https://vuejs.org/guide/components/provide-inject.html) throughout the app by calling [`app.provide()`](https://vuejs.org/api/application.html#app-provide).
+2. Make a resource <span class="custom-link">[injectable](https://vuejs.org/guide/components/provide-inject.html)</span> throughout the app by calling <span class="custom-link">[`app.provide()`](https://vuejs.org/api/application.html#app-provide)</span>.
 
-3. Add some global instance properties or methods by attaching them to [`app.config.globalProperties`](https://vuejs.org/api/application.html#app-config-globalproperties).
+3. Add some global instance properties or methods by attaching them to <span class="custom-link">[`app.config.globalProperties`](https://vuejs.org/api/application.html#app-config-globalproperties)</span>.
 
-4. A library that needs to perform some combination of the above (e.g. [vue-router](https://github.com/vuejs/vue-router-next)).
+4. A library that needs to perform some combination of the above (e.g. <span class="custom-link">[vue-router](https://github.com/vuejs/vue-router-next)</span>).
 
 
 ## Writing a Plugin​
 
-In order to better understand how to create your own Vue.js plugins, we will create a very simplified version of a plugin that displays `i18n` (short for [Internationalization](https://en.wikipedia.org/wiki/Internationalization_and_localization)) strings.
+In order to better understand how to create your own Vue.js plugins, we will create a very simplified version of a plugin that displays `i18n` (short for <span class="custom-link">[Internationalization](https://en.wikipedia.org/wiki/Internationalization_and_localization)</span>) strings.
 
 Let's begin by setting up the plugin object. It is recommended to create it in a separate file and export it, as shown below to keep the logic contained and separate.
 
@@ -98,7 +98,7 @@ app.use(i18nPlugin, {
 
 Now, our initial expression `$translate('greetings.hello')` will be replaced by `Bonjour!` at runtime.
 
-See also: [Augmenting Global Properties](https://vuejs.org/guide/typescript/options-api.html#augmenting-global-properties) <sup>TS</sup>
+See also: <span class="custom-link">[Augmenting Global Properties](https://vuejs.org/guide/typescript/options-api.html#augmenting-global-properties)</span> <sup>TS</sup>
 
 
 <Aside type="note" title="TIP">
@@ -134,4 +134,4 @@ console.log(i18n.greetings.hello)
 
 ### Bundle for NPM​
 
-If you further want to build and publish your plugin for others to use, see [Vite's section on Library Mode](https://vitejs.dev/guide/build.html#library-mode).
+If you further want to build and publish your plugin for others to use, see <span class="custom-link">[Vite's section on Library Mode](https://vitejs.dev/guide/build.html#library-mode)</span>.

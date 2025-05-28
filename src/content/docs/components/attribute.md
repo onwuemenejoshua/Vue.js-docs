@@ -3,12 +3,12 @@ title: Fallthrough Attributes
 description: This page provides a comprehensive overview of fallthrough attributes in Vue.js.
 ---
 
-> This page assumes you've already read the [Components Basics](https://vuejs.org/guide/essentials/component-basics). Read that first if you are new to components.
+> This page assumes you've already read the <span class="custom-link">[Components Basics](https://vuejs.org/guide/essentials/component-basics)</span>. Read that first if you are new to components.
 
 
 ## Attribute Inheritance​
 
-A "fallthrough attribute" is an attribute or `v-on` event listener that is passed to a component, but is not explicitly declared in the receiving component's [props](/components/props/) or [emits](/components/events/). Common examples of this include `class`, `style`, and `id` attributes.
+A "fallthrough attribute" is an attribute or `v-on` event listener that is passed to a component, but is not explicitly declared in the receiving component's <span class="custom-link">[props](/components/props/)</span> or <span class="custom-link">[emits](/components/events/)</span>. Common examples of this include `class`, `style`, and `id` attributes.
 
 When a component renders a single root element, fallthrough attributes will be automatically added to the root element's attributes. For example, given a `<MyButton>` component with the following template:
 
@@ -79,7 +79,7 @@ Note that:
 
 If you do not want a component to automatically inherit attributes, you can set `inheritAttrs: false` in the component's options.
 
-Since 3.3 you can also use [`defineOptions`](https://vuejs.org/api/sfc-script-setup.html#defineoptions) directly in `<script setup>`:
+Since 3.3 you can also use <span class="custom-link">[`defineOptions`](https://vuejs.org/api/sfc-script-setup.html#defineoptions)</span> directly in `<script setup>`:
 
 
 ```vue
@@ -107,7 +107,7 @@ Some notes:
 
 * A `v-on` event listener like `@click` will be exposed on the object as a function under `$attrs.onClick`.
 
-Using our `<MyButton>` component example from the [previous section](/components/attribute/#attribute-inheritance) - sometimes we may need to wrap the actual `<button>` element with an extra `<div>` for styling purposes:
+Using our `<MyButton>` component example from the <span class="custom-link">[previous section](/components/attribute/#attribute-inheritance)</span> - sometimes we may need to wrap the actual `<button>` element with an extra `<div>` for styling purposes:
 
 
 ```html
@@ -126,7 +126,7 @@ We want all fallthrough attributes like `class` and `v-on` listeners to be appli
 ```
 
 
-Remember that [`v-bind`](/essentials/template/#dynamically-binding-multiple-attributes) without an [argument](/essentials/template/#dynamically-binding-multiple-attributes) binds all the properties of an object as attributes of the target element.
+Remember that <span class="custom-link">[`v-bind`](/essentials/template/#dynamically-binding-multiple-attributes)</span> without an <span class="custom-link">[argument](/essentials/template/#dynamically-binding-multiple-attributes)</span> binds all the properties of an object as attributes of the target element.
 
 ## Attribute Inheritance on Multiple Root Nodes​
 

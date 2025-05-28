@@ -89,6 +89,27 @@ export default defineConfig({
             { label: "Suspense", slug: "builts-in/suspense" },
           ],
         },
+        {
+          label: "Scalling Up",
+          items: [
+            {
+              label: "Single-File Components",
+              slug: "scalling-up/single-file-component",
+            },
+            {
+              label: "Tooling",
+              slug: "scalling-up/tooling",
+            },
+            {
+              label: "Routing",
+              slug: "scalling-up/routing",
+            },
+            {
+              label: "State Management",
+              slug: "scalling-up/state-management",
+            },
+          ],
+        },
       ],
     }),
   ],

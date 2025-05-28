@@ -3,15 +3,15 @@ title: Component Registration
 description: This page provides an overview of how to register Vue components either globally or locally within a Vue application.
 ---
 
-> This page assumes you've already read the [Components Basics](https://vuejs.org/guide/essentials/component-basics.html). Read that first if you are new to components.
+> This page assumes you've already read the <span class="custom-link">[Components Basics](https://vuejs.org/guide/essentials/component-basics.html)</span>. Read that first if you are new to components.
 
-[Watch a free video lesson on Vue School](https://vueschool.io/lessons/vue-3-global-vs-local-vue-components?friend=vuejs)
+<span class="custom-link">[Watch a free video lesson on Vue School](https://vueschool.io/lessons/vue-3-global-vs-local-vue-components?friend=vuejs)</span>
 
 A Vue component needs to be "registered" so that Vue knows where to locate its implementation when it is encountered in a template. There are two ways to register components: global and local.
 
 ## Global Registration​
 
-We can make components available globally in the current [Vue application](https://vuejs.org/guide/essentials/application.html) using the `.component()` method:
+We can make components available globally in the current <span class="custom-link">[Vue application](https://vuejs.org/guide/essentials/application.html)</span> using the `.component()` method:
 
 ```js
 import { createApp } from 'vue'
@@ -115,7 +115,7 @@ Throughout the guide, we are using PascalCase names when registering components.
 
 2. `<PascalCase />` makes it more obvious that this is a Vue component instead of a native HTML element in templates. It also differentiates Vue components from custom elements (web components).
 
-This is the recommended style when working with SFC or string templates. However, as discussed in [in-DOM Template Parsing Caveats](https://vuejs.org/guide/essentials/component-basics.html#in-dom-template-parsing-caveats), PascalCase tags are not usable in in-DOM templates.
+This is the recommended style when working with SFC or string templates. However, as discussed in <span class="custom-link">[in-DOM Template Parsing Caveats](https://vuejs.org/guide/essentials/component-basics.html#in-dom-template-parsing-caveats)</span>, PascalCase tags are not usable in in-DOM templates.
 
 Luckily, Vue supports resolving kebab-case tags to components registered using PascalCase. This means a component registered as `MyComponent` can be referenced inside a Vue template (or inside an HTML element rendered by Vue) via both `<MyComponent>` and `<my-component>`. This allows us to use the same JavaScript component registration code regardless of template source.
 

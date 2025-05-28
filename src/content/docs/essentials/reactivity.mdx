@@ -15,106 +15,101 @@ This page and many other chapters later in the guide contain different content f
 
 ### `ref()`
 
-In Composition API, the recommended way to declare reactive state is using the [`ref`](https://vuejs.org/api/reactivity-core.html#ref) function:
+In Composition API, the recommended way to declare reactive state is using the <span class="custom-link">[`ref`](https://vuejs.org/api/reactivity-core.html#ref)</span> function:
 
 ```js
-import { ref } from 'vue'
+import { ref } from "vue";
 
-const count = ref(0)
+const count = ref(0);
 ```
 
 `ref()` takes the argument and returns it wrapped within a ref object with a `.value` property:
 
 ```js
-const count = ref(0)
+const count = ref(0);
 
-console.log(count) // { value: 0 }
-console.log(count.value) // 0
+console.log(count); // { value: 0 }
+console.log(count.value); // 0
 
-count.value++
-console.log(count.value) // 1
+count.value++;
+console.log(count.value); // 1
 ```
 
-> See also: [Typing Refs](https://vuejs.org/guide/typescript/composition-api.html#typing-ref) <sup>TS</sup>
-
+> See also: <span class="custom-link">[Typing Refs](https://vuejs.org/guide/typescript/composition-api.html#typing-ref)</span> <sup>TS</sup>
 
 To access refs in a component's template, declare and return them from a component's `setup()` function:
 
 ```js
-import { ref } from 'vue'
+import { ref } from "vue";
 
 export default {
   // `setup` is a special hook dedicated for the Composition API.
   setup() {
-    const count = ref(0)
+    const count = ref(0);
 
     // expose the ref to the template
     return {
-      count
-    }
-  }
-}
+      count,
+    };
+  },
+};
 ```
 
 ```html
 <div>{{ count }}</div>
 ```
 
-Notice that we did not need to append `.value` when using the ref in the template. For convenience, refs are automatically unwrapped when used inside templates (with a few [caveats](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#caveat-when-unwrapping-in-templates)).
+Notice that we did not need to append `.value` when using the ref in the template. For convenience, refs are automatically unwrapped when used inside templates (with a few <span class="custom-link">[caveats](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#caveat-when-unwrapping-in-templates)</span>).
 
 You can also mutate a ref directly in event handlers:
 
 ```html
-<button @click="count++">
-  {{ count }}
-</button>
+<button @click="count++">{{ count }}</button>
 ```
 
 For more complex logic, we can declare functions that mutate refs in the same scope and expose them as methods alongside the state:
 
 ```js
-import { ref } from 'vue'
+import { ref } from "vue";
 
 export default {
   setup() {
-    const count = ref(0)
+    const count = ref(0);
 
     function increment() {
       // .value is needed in JavaScript
-      count.value++
+      count.value++;
     }
 
     // don't forget to expose the function as well.
     return {
       count,
-      increment
-    }
-  }
-}
+      increment,
+    };
+  },
+};
 ```
 
 Exposed methods can then be used as event handlers:
 
 ```html
-<button @click="increment">
-  {{ count }}
-</button>
+<button @click="increment">{{ count }}</button>
 ```
 
-Here's the example live on [Codepen](https://codepen.io/vuejs-examples/pen/WNYbaqo), without using any build tools.
+Here's the example live on <span class="custom-link">[Codepen](https://codepen.io/vuejs-examples/pen/WNYbaqo)</span>, without using any build tools.
 
 ### `<script setup>​`
-Manually exposing state and methods via `setup()` can be verbose. Luckily, it can be avoided when using [Single-File Components (SFCs)](https://vuejs.org/guide/scaling-up/sfc.html). We can simplify the usage with `<script setup>`:
 
+Manually exposing state and methods via `setup()` can be verbose. Luckily, it can be avoided when using <span class="custom-link">[Single-File Components (SFCs)](https://vuejs.org/guide/scaling-up/sfc.html)</span>. We can simplify the usage with `<script setup>`:
 
 ```vue
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
-const count = ref(0)
+const count = ref(0);
 
 function increment() {
-  count.value++
+  count.value++;
 }
 </script>
 
@@ -124,14 +119,18 @@ function increment() {
   </button>
 </template>
 ```
-[Try it in the Playground](https://play.vuejs.org/#eNo9jUEKgzAQRa8yZKMiaNcllvYe2dgwQqiZhDhxE3L3jrW4/DPvv1/UK8Zhz6juSm82uciwIef4MOR8DImhQMIFKiwpeGgEbQwZsoE2BhsyMUwH0d66475ksuwCgSOb0CNx20ExBCc77POase8NVUN6PBdlSwKjj+vMKAlAvzOzWJ52dfYzGXXpjPoBAKX856uopDGeFfnq8XKp+gWq4FAi)
+
+<span class="custom-link">
+  [Try it in the
+  Playground](https://play.vuejs.org/#eNo9jUEKgzAQRa8yZKMiaNcllvYe2dgwQqiZhDhxE3L3jrW4/DPvv1/UK8Zhz6juSm82uciwIef4MOR8DImhQMIFKiwpeGgEbQwZsoE2BhsyMUwH0d66475ksuwCgSOb0CNx20ExBCc77POase8NVUN6PBdlSwKjj+vMKAlAvzOzWJ52dfYzGXXpjPoBAKX856uopDGeFfnq8XKp+gWq4FAi)
+</span>
 
 Top-level imports, variables and functions declared in `<script setup>` are automatically usable in the template of the same component. Think of the template as a JavaScript function declared in the same scope - it naturally has access to everything declared alongside it.
 
 <Aside type="note" title="TIP">
 For the rest of the guide, we will be primarily using SFC + `<script setup>` syntax for the Composition API code examples, as that is the most common usage for Vue developers.
 
-If you are not using SFC, you can still use Composition API with the [`setup()`](https://vuejs.org/api/composition-api-setup.html) option.
+If you are not using SFC, you can still use Composition API with the <span class="custom-link">[`setup()`](https://vuejs.org/api/composition-api-setup.html)</span> option.
 
 </Aside>
 
@@ -150,19 +149,19 @@ The `.value` property gives Vue the opportunity to detect when a ref has been ac
 const myRef = {
   _value: 0,
   get value() {
-    track()
-    return this._value
+    track();
+    return this._value;
   },
   set value(newValue) {
-    this._value = newValue
-    trigger()
-  }
-}
+    this._value = newValue;
+    trigger();
+  },
+};
 ```
 
 Another nice trait of refs is that unlike plain variables, you can pass refs into functions while retaining access to the latest value and the reactivity connection. This is particularly useful when refactoring complex logic into reusable code.
 
-The reactivity system is discussed in more details in the [Reactivity in Depth](https://vuejs.org/guide/extras/reactivity-in-depth.html) section.
+The reactivity system is discussed in more details in the <span class="custom-link">[Reactivity in Depth](https://vuejs.org/guide/extras/reactivity-in-depth.html)</span> section.
 
 ### Deep Reactivity​
 
@@ -171,43 +170,47 @@ Refs can hold any value type, including deeply nested objects, arrays, or JavaSc
 A ref will make its value deeply reactive. This means you can expect changes to be detected even when you mutate nested objects or arrays:
 
 ```js
-import { ref } from 'vue'
+import { ref } from "vue";
 
 const obj = ref({
   nested: { count: 0 },
-  arr: ['foo', 'bar']
-})
+  arr: ["foo", "bar"],
+});
 
 function mutateDeeply() {
   // these will work as expected.
-  obj.value.nested.count++
-  obj.value.arr.push('baz')
+  obj.value.nested.count++;
+  obj.value.arr.push("baz");
 }
 ```
 
-Non-primitive values are turned into reactive proxies via [`reactive()`](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#reactive), which is discussed below.
+Non-primitive values are turned into reactive proxies via <span class="custom-link">[`reactive()`](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#reactive)</span>, which is discussed below.
 
-It is also possible to opt-out of deep reactivity with [shallow refs](https://vuejs.org/api/reactivity-advanced.html#shallowref). For shallow refs, only `.value` access is tracked for reactivity. Shallow refs can be used for optimizing performance by avoiding the observation cost of large objects, or in cases where the inner state is managed by an external library.
+It is also possible to opt-out of deep reactivity with <span class="custom-link">[shallow refs](https://vuejs.org/api/reactivity-advanced.html#shallowref)</span>. For shallow refs, only `.value` access is tracked for reactivity. Shallow refs can be used for optimizing performance by avoiding the observation cost of large objects, or in cases where the inner state is managed by an external library.
 
 **Further Reading**
 
-* [Reduce Reactivity Overhead for Large Immutable Structures](https://vuejs.org/guide/best-practices/performance.html#reduce-reactivity-overhead-for-large-immutable-structures)
-* [Integration with External State Systems](https://vuejs.org/guide/extras/reactivity-in-depth.html#integration-with-external-state-systems)
-
+- <span class="custom-link">
+    [Reduce Reactivity Overhead for Large Immutable
+    Structures](https://vuejs.org/guide/best-practices/performance.html#reduce-reactivity-overhead-for-large-immutable-structures)
+  </span>
+- <span class="custom-link">
+    [Integration with External State
+    Systems](https://vuejs.org/guide/extras/reactivity-in-depth.html#integration-with-external-state-systems)
+  </span>
 
 ### DOM Update Timing​
 
 When you mutate reactive state, the DOM is updated automatically. However, it should be noted that the DOM updates are not applied synchronously. Instead, Vue buffers them until the "next tick" in the update cycle to ensure that each component updates only once no matter how many state changes you have made.
 
-To wait for the DOM update to complete after a state change, you can use the [nextTick()](https://vuejs.org/api/general.html#nexttick) global API:
-
+To wait for the DOM update to complete after a state change, you can use the <span class="custom-link">[nextTick()](https://vuejs.org/api/general.html#nexttick)</span> global API:
 
 ```js
-import { nextTick } from 'vue'
+import { nextTick } from "vue";
 
 async function increment() {
-  count.value++
-  await nextTick()
+  count.value++;
+  await nextTick();
   // Now the DOM is updated
 }
 ```
@@ -217,35 +220,33 @@ async function increment() {
 There is another way to declare reactive state, with the `reactive()` API. Unlike a ref which wraps the inner value in a special object, `reactive()` makes an object itself reactive:
 
 ```js
-import { reactive } from 'vue'
+import { reactive } from "vue";
 
-const state = reactive({ count: 0 })
+const state = reactive({ count: 0 });
 ```
 
-> See also: [Typing Refs](https://vuejs.org/guide/typescript/composition-api.html#typing-reactive) <sup>TS</sup>
+> See also: <span class="custom-link">[Typing Refs](https://vuejs.org/guide/typescript/composition-api.html#typing-reactive)</span> <sup>TS</sup>
 
 Used in Template:
 
 ```html
-<button @click="state.count++">
-  {{ state.count }}
-</button>
+<button @click="state.count++">{{ state.count }}</button>
 ```
 
-Reactive objects are [JavaScript Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) and behave just like normal objects. The difference is that Vue is able to intercept the access and mutation of all properties of a reactive object for reactivity tracking and triggering.
+Reactive objects are <span class="custom-link">[JavaScript Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)</span> and behave just like normal objects. The difference is that Vue is able to intercept the access and mutation of all properties of a reactive object for reactivity tracking and triggering.
 
-`reactive()` converts the object deeply: nested objects are also wrapped with `reactive()` when accessed. It is also called by `ref()` internally when the ref value is an object. Similar to shallow refs, there is also the [`shallowReactive()`](https://vuejs.org/api/reactivity-advanced.html#shallowreactive) API for opting-out of deep reactivity.
+`reactive()` converts the object deeply: nested objects are also wrapped with `reactive()` when accessed. It is also called by `ref()` internally when the ref value is an object. Similar to shallow refs, there is also the <span class="custom-link">[`shallowReactive()`](https://vuejs.org/api/reactivity-advanced.html#shallowreactive)</span> API for opting-out of deep reactivity.
 
 ### Reactive Proxy vs. Original​
 
 It is important to note that the returned value from `reactive()` is a Proxy of the original object, which is not equal to the original object:
 
 ```js
-const raw = {}
-const proxy = reactive(raw)
+const raw = {};
+const proxy = reactive(raw);
 
 // proxy is NOT equal to the original.
-console.log(proxy === raw) // false
+console.log(proxy === raw); // false
 ```
 
 Only the proxy is reactive - mutating the original object will not trigger updates. Therefore, the best practice when working with Vue's reactivity system is to exclusively use the proxied versions of your state.
@@ -254,54 +255,53 @@ To ensure consistent access to the proxy, calling `reactive()` on the same objec
 
 ```js
 // calling reactive() on the same object returns the same proxy
-console.log(reactive(raw) === proxy) // true
+console.log(reactive(raw) === proxy); // true
 
 // calling reactive() on a proxy returns itself
-console.log(reactive(proxy) === proxy) // true
+console.log(reactive(proxy) === proxy); // true
 ```
 
 This rule applies to nested objects as well. Due to deep reactivity, nested objects inside a reactive object are also proxies:
 
 ```js
-const proxy = reactive({})
+const proxy = reactive({});
 
-const raw = {}
-proxy.nested = raw
+const raw = {};
+proxy.nested = raw;
 
-console.log(proxy.nested === raw) // false
+console.log(proxy.nested === raw); // false
 ```
 
 ### Limitations of `reactive()​`
 
 The `reactive()` API has a few limitations:
 
-1. Limited value types: it only works for object types (objects, arrays, and [collection types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections) such as `Map` and `Set`). It cannot hold [primitive types](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) such as `string`, `number` or `boolean`.
+1. Limited value types: it only works for object types (objects, arrays, and <span class="custom-link">[collection types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections)</span> such as `Map` and `Set`). It cannot hold <span class="custom-link">[primitive types](https://developer.mozilla.org/en-US/docs/Glossary/Primitive)</span> such as `string`, `number` or `boolean`.
 
 2. Cannot replace entire object: since Vue's reactivity tracking works over property access, we must always keep the same reference to the reactive object. This means we can't easily "replace" a reactive object because the reactivity connection to the first reference is lost:
 
-
 ```js
-let state = reactive({ count: 0 })
+let state = reactive({ count: 0 });
 
 // the above reference ({ count: 0 }) is no longer being tracked
 // (reactivity connection is lost!)
-state = reactive({ count: 1 })
+state = reactive({ count: 1 });
 ```
 
 3. Not destructure-friendly: when we destructure a reactive object's primitive type property into local variables, or when we pass that property into a function, we will lose the reactivity connection:
 
 ```js
-const state = reactive({ count: 0 })
+const state = reactive({ count: 0 });
 
 // count is disconnected from state.count when destructured.
-let { count } = state
+let { count } = state;
 // does not affect original state
-count++
+count++;
 
 // the function receives a plain number and
 // won't be able to track changes to state.count
 // we have to pass the entire object in to retain reactivity
-callSomeFunction(state.count)
+callSomeFunction(state.count);
 ```
 
 Due to these limitations, we recommend using `ref()` as the primary API for declaring reactive state.
@@ -313,42 +313,42 @@ Due to these limitations, we recommend using `ref()` as the primary API for decl
 A ref is automatically unwrapped when accessed or mutated as a property of a reactive object. In other words, it behaves like a normal property:
 
 ```js
-const count = ref(0)
+const count = ref(0);
 const state = reactive({
-  count
-})
+  count,
+});
 
-console.log(state.count) // 0
+console.log(state.count); // 0
 
-state.count = 1
-console.log(count.value) // 1
+state.count = 1;
+console.log(count.value); // 1
 ```
 
 If a new ref is assigned to a property linked to an existing ref, it will replace the old ref:
 
 ```js
-const otherCount = ref(2)
+const otherCount = ref(2);
 
-state.count = otherCount
-console.log(state.count) // 2
+state.count = otherCount;
+console.log(state.count); // 2
 // original ref is now disconnected from state.count
-console.log(count.value) // 1
+console.log(count.value); // 1
 ```
 
-Ref unwrapping only happens when nested inside a deep reactive object. It does not apply when it is accessed as a property of a [shallow reactive object](https://vuejs.org/api/reactivity-advanced.html#shallowreactive).
+Ref unwrapping only happens when nested inside a deep reactive object. It does not apply when it is accessed as a property of a <span class="custom-link">[shallow reactive object](https://vuejs.org/api/reactivity-advanced.html#shallowreactive)</span>.
 
 ### Caveat in Arrays and Collections​
 
 Unlike reactive objects, there is no unwrapping performed when the ref is accessed as an element of a reactive array or a native collection type like `Map`:
 
 ```js
-const books = reactive([ref('Vue 3 Guide')])
+const books = reactive([ref("Vue 3 Guide")]);
 // need .value here
-console.log(books[0].value)
+console.log(books[0].value);
 
-const map = reactive(new Map([['count', ref(0)]]))
+const map = reactive(new Map([["count", ref(0)]]));
 // need .value here
-console.log(map.get('count').value)
+console.log(map.get("count").value);
 ```
 
 ### Caveat when Unwrapping in Templates​
@@ -358,8 +358,8 @@ Ref unwrapping in templates only applies if the ref is a top-level property in t
 In the example below, `count` and `object` are top-level properties, but `object.id` is not:
 
 ```js
-const count = ref(0)
-const object = { id: ref(1) }
+const count = ref(0);
+const object = { id: ref(1) };
 ```
 
 Therefore, this expression works as expected:
@@ -377,7 +377,7 @@ Therefore, this expression works as expected:
 The rendered result will be `[object Object]1` because `object.id` is not unwrapped when evaluating the expression and remains a ref object. To fix this, we can destructure `id` into a top-level property:
 
 ```js
-const { id } = object
+const { id } = object;
 ```
 
 ```html

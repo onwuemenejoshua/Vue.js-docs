@@ -6,3 +6,8 @@
 .site-title {
   color: green;
 }
+
+.custom-link a {
+  color: green;
+  text-decoration: none;
+}
