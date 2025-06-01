@@ -1,0 +1,221 @@
+---
+title: Using Vue with TypeScript
+description: This page provides guidance on using TypeScript with Vue.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+A type system like TypeScript can detect many common errors via static analysis at build time. This reduces the chance of runtime errors in production, and also allows us to more confidently refactor code in large-scale applications. TypeScript also improves developer ergonomics via type-based auto-completion in IDEs.
+
+Vue is written in TypeScript itself and provides first-class TypeScript support. All official Vue packages come with bundled type declarations that should work out-of-the-box.
+
+
+## Project Setup​
+
+<span class="custom-link">[`create-vue`](https://github.com/vuejs/create-vue)</span>, the official project scaffolding tool, offers the options to scaffold a <span class="custom-link">[Vite](https://vitejs.dev/)</span>-powered, TypeScript-ready Vue project.
+
+### Overview​
+
+With a Vite-based setup, the dev server and the bundler are transpilation-only and do not perform any type-checking. This ensures the Vite dev server stays blazing fast even when using TypeScript.
+
+* During development, we recommend relying on a good <span class="custom-link">[IDE setup](https://vuejs.org/guide/typescript/overview.html#ide-support)</span> for instant feedback on type errors.
+
+* If using SFCs, use the <span class="custom-link">[`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc)</span> utility for command line type checking and type declaration generation. `vue-tsc` is a wrapper around `tsc`, TypeScript's own command line interface. It works largely the same as tsc except that it supports Vue SFCs in addition to TypeScript files. You can run `vue-tsc` in watch mode in parallel to the Vite dev server, or use a Vite plugin like <span class="custom-link">[vite-plugin-checker](https://vite-plugin-checker.netlify.app/)</span> which runs the checks in a separate worker thread.
+
+* Vue CLI also provides TypeScript support, but is no longer recommended. See <span class="custom-link">[notes below](https://vuejs.org/guide/typescript/overview.html#note-on-vue-cli-and-ts-loader)</span>.
+
+### IDE Support​
+
+* <span class="custom-link">[Visual Studio Code](https://code.visualstudio.com/)</span> (VS Code) is strongly recommended for its great out-of-the-box support for TypeScript.
+
+    * <span class="custom-link">[Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar)</span> (previously Volar) is the official VS Code extension that provides TypeScript support inside Vue SFCs, along with many other great features.
+
+    <Aside type="note" title="TIP">
+   Vue - Official extension replaces <span class="custom-link">[Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)</span>, our previous official VS Code extension for Vue 2. If you have Vetur currently installed, make sure to disable it in Vue 3 projects.
+   </Aside>
+
+* <span class="custom-link">[WebStorm](https://www.jetbrains.com/webstorm/)</span> also provides out-of-the-box support for both TypeScript and Vue. Other JetBrains IDEs support them too, either out of the box or via a <span class="custom-link">[free plugin](https://plugins.jetbrains.com/plugin/9442-vue-js)</span>. As of version 2023.2, WebStorm and the Vue Plugin come with built-in support for the Vue Language Server. You can set the Vue service to use Volar integration on all TypeScript versions, under Settings > Languages & Frameworks > TypeScript > Vue. By default, Volar will be used for TypeScript versions 5.0 and higher.
+
+
+### Configuring `tsconfig.json`
+
+Projects scaffolded via `create-vue` include pre-configured `tsconfig.json`. The base config is abstracted in the <span class="custom-link">[`@vue/tsconfig`](https://github.com/vuejs/tsconfig)</span> package. Inside the project, we use <span class="custom-link">[Project References](https://www.typescriptlang.org/docs/handbook/project-references.html)</span> to ensure correct types for code running in different environments (e.g. app code and test code should have different global variables).
+
+When configuring `tsconfig.json` manually, some notable options include:
+
+* <span class="custom-link">[`compilerOptions.isolatedModules`](https://www.typescriptlang.org/tsconfig#isolatedModules)</span> is set to `true` because Vite uses esbuild for transpiling TypeScript and is subject to single-file transpile limitations. <span class="custom-link">[`compilerOptions.verbatimModuleSyntax`](https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax)</span> is <span class="custom-link">[a superset of `isolatedModules`](https://github.com/microsoft/TypeScript/issues/53601)</span> and is a good choice, too - it's what <span class="custom-link">[`@vue/tsconfig`](https://github.com/vuejs/tsconfig)</span> uses.
+
+* If you're using Options API, you need to set <span class="custom-link">[`compilerOptions.strict`](https://www.typescriptlang.org/tsconfig#strict)</span> to `true` (or at least enable <span class="custom-link">[`compilerOptions.noImplicitThis`](https://www.typescriptlang.org/tsconfig#noImplicitThis)</span>, which is a part of the `strict` flag) to leverage type checking of `this` in component options. Otherwise this will be treated as `any`.
+
+* If you have configured resolver aliases in your build tool, for example the `@/*` alias configured by default in a `create-vue` project, you need to also configure it for TypeScript via <span class="custom-link">[`compilerOptions.paths`](https://www.typescriptlang.org/tsconfig#paths)</span>.
+
+* If you intend to use TSX with Vue, set <span class="custom-link">[`compilerOptions.jsx`](https://www.typescriptlang.org/tsconfig#jsx)</span> to `"preserve"`, and set <span class="custom-link">[`compilerOptions.jsxImportSource`](https://www.typescriptlang.org/tsconfig#jsxImportSource)</span> to `"vue"`.
+
+See also:
+
+* <span class="custom-link">[Official TypeScript compiler options docs](https://www.typescriptlang.org/docs/handbook/compiler-options.html)</span>
+* <span class="custom-link">[esbuild TypeScript compilation caveats](https://esbuild.github.io/content-types/#typescript-caveats)</span>
+
+
+### Note on Vue CLI and `ts-loader​`
+
+In webpack-based setups such as Vue CLI, it is common to perform type checking as part of the module transform pipeline, for example with `ts-loader`. This, however, isn't a clean solution because the type system needs knowledge of the entire module graph to perform type checks. Individual module's transform step simply is not the right place for the task. It leads to the following problems:
+
+* `ts-loader` can only type check post-transform code. This doesn't align with the errors we see in IDEs or from `vue-tsc`, which map directly back to the source code.
+
+* Type checking can be slow. When it is performed in the same thread / process with code transformations, it significantly affects the build speed of the entire application.
+
+* We already have type checking running right in our IDE in a separate process, so the cost of dev experience slow down simply isn't a good trade-off.
+
+If you are currently using Vue 3 + TypeScript via Vue CLI, we strongly recommend migrating over to Vite. We are also working on CLI options to enable transpile-only TS support, so that you can switch to `vue-tsc` for type checking.
+
+
+## General Usage Notes​
+### `defineComponent()​`
+
+To let TypeScript properly infer types inside component options, we need to define components with <span class="custom-link">[`defineComponent()`](https://vuejs.org/api/general#definecomponent)</span>:
+
+
+```ts
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  // type inference enabled
+  props: {
+    name: String,
+    msg: { type: String, required: true }
+  },
+  data() {
+    return {
+      count: 1
+    }
+  },
+  mounted() {
+    this.name // type: string | undefined
+    this.msg // type: string
+    this.count // type: number
+  }
+})
+```
+
+`defineComponent()` also supports inferring the props passed to `setup()` when using Composition API without `<script setup>`:
+
+
+```ts
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  // type inference enabled
+  props: {
+    message: String
+  },
+  setup(props) {
+    props.message // type: string | undefined
+  }
+})
+```
+
+See also:
+
+* <span class="custom-link">[Note on webpack Treeshaking](https://vuejs.org/api/general#note-on-webpack-treeshaking)</span>
+* <span class="custom-link">[type tests for `defineComponent`](https://github.com/vuejs/core/blob/main/packages-private/dts-test/defineComponent.test-d.tsx)</span>
+
+
+<Aside title="note" title="TIP">
+
+`defineComponent()` also enables type inference for components defined in plain JavaScript.
+</Aside>
+
+
+### Usage in Single-File Components​
+
+To use TypeScript in SFCs, add the `lang="ts"` attribute to `<script>` tags. When `lang="ts"` is present, all template expressions also enjoy stricter type checking.
+
+```vue
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  data() {
+    return {
+      count: 1
+    }
+  }
+})
+</script>
+
+<template>
+  <!-- type checking and auto-completion enabled -->
+  {{ count.toFixed(2) }}
+</template>
+```
+
+
+`lang="ts"` can also be used with `<script setup>`:
+
+```vue
+<script setup lang="ts">
+// TypeScript enabled
+import { ref } from 'vue'
+
+const count = ref(1)
+</script>
+
+<template>
+  <!-- type checking and auto-completion enabled -->
+  {{ count.toFixed(2) }}
+</template>
+```
+
+### TypeScript in Templates​
+
+The `<template>` also supports TypeScript in binding expressions when `<script lang="ts">` or `<script setup lang="ts">` is used. This is useful in cases where you need to perform type casting in template expressions.
+
+Here's a contrived example:
+
+
+```vue
+<script setup lang="ts">
+let x: string | number = 1
+</script>
+
+<template>
+  <!-- error because x could be a string -->
+  {{ x.toFixed(2) }}
+</template>
+```
+
+This can be worked around with an inline type cast:
+
+```vue
+<script setup lang="ts">
+let x: string | number = 1
+</script>
+
+<template>
+  {{ (x as number).toFixed(2) }}
+</template>
+```
+
+<Aside type="note" title="TIP">
+If using Vue CLI or a webpack-based setup, TypeScript in template expressions requires `vue-loader@^16.8.0`.
+</Aside>
+
+
+### Usage with TSX​
+
+Vue also supports authoring components with JSX / TSX. Details are covered in the <span class="custom-link">[Render Function & JSX](https://vuejs.org/guide/extras/render-function#jsx-tsx)</span> guide.
+
+
+## Generic Components​
+
+Generic components are supported in two cases:
+
+* In SFCs: <span class="custom-link">[`<script setup>` with the `generic` attribute](https://vuejs.org/api/sfc-script-setup#generics)</span>
+* Render function / JSX components: <span class="custom-link">[`defineComponent()'`s function signature](https://vuejs.org/api/general#function-signature)</span>
+
+
+## API-Specific Recipes​
+
+* <span class="custom-link">[TS with Composition API](https://vuejs.org/guide/typescript/composition-api)</span>
+* <span class="custom-link">[TS with Options API](https://vuejs.org/guide/typescript/options-api)</span>

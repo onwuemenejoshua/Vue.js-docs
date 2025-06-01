@@ -110,6 +110,45 @@ export default defineConfig({
             },
           ],
         },
+        {
+          label: "Best practices",
+          items: [
+            {
+              label: "Production Deployment",
+              slug: "best-practices/production-deployment",
+            },
+            {
+              label: "Performance",
+              slug: "best-practices/performance",
+            },
+          ],
+        },
+        {
+          label: "TypeScript",
+          items: [
+            {
+              label: "Overview",
+              slug: "typescript/overview",
+            },
+            {
+              label: "TS with composition API",
+              slug: "typescript/composition",
+            },
+          ],
+        },
+        {
+          label: "Extra Topics",
+          items: [
+            {
+              label: "Ways of Using Vue",
+              slug: "extra-topics/ways-of-using-vue",
+            },
+            {
+              label: "Rendering Mechanism",
+              slug: "extra-topics/rendering-mechanism",
+            },
+          ],
+        },
       ],
     }),
   ],
