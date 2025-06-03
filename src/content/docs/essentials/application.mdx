@@ -5,7 +5,7 @@ description: This page shows you how to create an application using Vue.js.
 
 ## The application instance​
 
-Every Vue application starts by creating a new application instance with the `createApp` function:
+Every Vue application starts by creating a new application instance with the <span class="custom-link">[`createApp`](https://vuejs.org/api/application.html#createapp)</span> function:
 
 ```js
 import { createApp } from "vue";
@@ -60,7 +60,7 @@ The content of the app's root component will be rendered inside the container el
 
 The `.mount()` method should always be called after all app configurations and asset registrations are done. Also note that its return value, unlike the asset registration methods, is the root component instance instead of the application instance.
 
-## In-DOM Root Component Template
+### In-DOM Root Component Template
 
 The template for the root component is usually part of the component itself, but it is also possible to provide the template separately by writing it directly inside the mount container:
 
@@ -86,7 +86,7 @@ app.mount("#app");
 
 Vue will automatically use the container's `innerHTML` as the template if the root component does not already have a `template` option.
 
-In-DOM templates are often used in applications that are <span class="custom-link">[using Vue without a build step](https://vuejs.org/guide/quick-start.html#using-vue-from-cdn)</span>. They can also be used in conjunction with server-side frameworks, where the root template might be generated dynamically by the server.
+In-DOM templates are often used in applications that are <span class="custom-link">[using Vue without a build step](/guides/quickstart/#using-vue-from-cdn)</span>. They can also be used in conjunction with server-side frameworks, where the root template might be generated dynamically by the server.
 
 ## App Configurations​
 

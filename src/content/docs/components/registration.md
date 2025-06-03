@@ -3,7 +3,9 @@ title: Component Registration
 description: This page provides an overview of how to register Vue components either globally or locally within a Vue application.
 ---
 
-> This page assumes you've already read the <span class="custom-link">[Components Basics](https://vuejs.org/guide/essentials/component-basics.html)</span>. Read that first if you are new to components.
+:::tip[TIP]
+This page assumes you've already read the <span class="custom-link">[Components Basics](https://vuejs.org/guide/essentials/component-basics.html)</span>. Read that first if you are new to components.
+:::
 
 <span class="custom-link">[Watch a free video lesson on Vue School](https://vueschool.io/lessons/vue-3-global-vs-local-vue-components?friend=vuejs)</span>
 
@@ -11,7 +13,7 @@ A Vue component needs to be "registered" so that Vue knows where to locate its i
 
 ## Global Registration​
 
-We can make components available globally in the current <span class="custom-link">[Vue application](https://vuejs.org/guide/essentials/application.html)</span> using the `.component()` method:
+We can make components available globally in the current <span class="custom-link">[Vue application](/essentials/application/)</span> using the `.component()` method:
 
 ```js
 import { createApp } from 'vue'

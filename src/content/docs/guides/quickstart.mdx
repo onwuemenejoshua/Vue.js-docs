@@ -21,7 +21,7 @@ import { Aside } from "@astrojs/starlight/components";
   version 18.3 or higher
 </Aside>
 
-In this section we will introduce how to scaffold a Vue <span class="custom-link">[Single Page Application](https://vuejs.org/guide/extras/ways-of-using-vue.html#single-page-application-spa)</span> on your local machine. The created project will be using a build setup based on <span class="custom-link">[Vite](https://vitejs.dev/)</span> and allow us to use Vue <span class="custom-link">[Single-File Components](https://vuejs.org/guide/scaling-up/sfc.html)</span> (SFCs).
+In this section we will introduce how to scaffold a Vue <span class="custom-link">[Single Page Application](/extra-topics/ways-of-using-vue/#single-page-application-spa)</span> on your local machine. The created project will be using a build setup based on <span class="custom-link">[Vite](https://vitejs.dev/)</span> and allow us to use Vue <span class="custom-link">[Single-File Components](/scalling-up/single-file-component/)</span> (SFCs).
 
 Make sure you have an up-to-date version of <span class="custom-link">[Node.js](https://nodejs.org/)</span> installed and your current working directory is the one where you intend to create a project. Run the following command in your command line (without the `$` sign):
 
@@ -114,9 +114,9 @@ If you are unsure about an option, simply choose `No` by hitting enter for now. 
 You should now have your first Vue project running! Note that the example components in the generated project are written using the <span class="custom-link">[Composition API](/guides/introduction/#composition-api)</span> and `<script setup>`, rather than the <span class="custom-link">[Options API](/guides/introduction/#options-api)</span>. Here are some additional tips:
 
 - The recommended IDE setup is <span class="custom-link">[Visual Studio Code](https://code.visualstudio.com/)</span> + <span class="custom-link">[Vue - Official extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar)</span>. If you use other editors, check out the <span class="custom-link">[IDE support section](https://vuejs.org/guide/scaling-up/tooling.html#ide-support)</span>.
-- More tooling details, including integration with backend frameworks, are discussed in the <span class="custom-link">[Tooling Guide](https://vuejs.org/guide/scaling-up/tooling.html)</span>.
+- More tooling details, including integration with backend frameworks, are discussed in the <span class="custom-link">[Tooling Guide](/scalling-up/tooling/)</span>.
 - To learn more about the underlying build tool Vite, check out the <span class="custom-link">[Vite docs](https://vitejs.dev/)</span>.
-- If you choose to use TypeScript, check out the <span class="custom-link">[TypeScript Usage Guide](https://vuejs.org/guide/typescript/overview.html)</span>.
+- If you choose to use TypeScript, check out the <span class="custom-link">[TypeScript Usage Guide](/typescript/overview/)</span>.
 
 When you are ready to ship your app to production, run the following:
 
@@ -127,7 +127,11 @@ When you are ready to ship your app to production, run the following:
   <TabItem label="bun">```sh bun run build ```</TabItem>
 </Tabs>
 
-This will create a production-ready build of your app in the project's `./dist` directory. Check out the <span class="custom-link">[Production Deployment Guide](https://vuejs.org/guide/best-practices/production-deployment.html)</span> to learn more about shipping your app to production.
+This will create a production-ready build of your app in the project's `./dist` directory. Check out the <span class="custom-link">[Production Deployment Guide](/best-practices/production-deployment/)</span> to learn more about shipping your app to production.
+
+&nbsp;&nbsp;&nbsp;
+
+**<span class="custom-link">[Next Steps >](/guides/quickstart/#next-steps)</span>**
 
 ## Using Vue from CDN
 
@@ -255,7 +259,7 @@ You can also add entries for other dependencies to the import map - but make sur
 </Aside>
 
 <Aside type="caution" title="Notes on Production Use">
-The examples so far are using the development build of Vue - if you intend to use Vue from a CDN in production, make sure to check out the <span class="custom-link">[Production Deployment Guide](https://vuejs.org/guide/best-practices/production-deployment.html#without-build-tools)</span>.
+The examples so far are using the development build of Vue - if you intend to use Vue from a CDN in production, make sure to check out the <span class="custom-link">[Production Deployment Guide](/best-practices/production-deployment/#without-build-tools)</span>.
 
 While it is possible to use Vue without a build system, an alternative approach to consider is using `vuejs/petite-vue` that could better suit the context where `jquery/jquery` (in the past) or `alpinejs/alpine` (in the present) might be used instead.
 

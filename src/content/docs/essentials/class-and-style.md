@@ -7,7 +7,7 @@ A common need for data binding is manipulating an element's class list and inlin
 
 ## Binding HTML Classes
 
-<span class="custom-link">[Watch a free video lesson on Vue School](https://vueschool.io/lessons/vue-fundamentals-capi-dynamic-css-classes-with-vue?friend=vuejs)</span>
+<span class="custom-link">[**Watch a free video lesson on Vue School**](https://vueschool.io/lessons/vue-fundamentals-capi-dynamic-css-classes-with-vue?friend=vuejs)</span>
 
 ### Binding to Objects​
 
@@ -62,7 +62,7 @@ This will render:
 <div class="active"></div>
 ```
 
-We can also bind to a <span class="custom-link">[computed property](https://vuejs.org/guide/essentials/computed)</span> that returns an object. This is a common and powerful pattern:
+We can also bind to a <span class="custom-link">[computed property](/essentials/computed/)</span> that returns an object. This is a common and powerful pattern:
 
 ```js
 const isActive = ref(true)
@@ -166,7 +166,7 @@ Will render:
 <span>This is a child component</span>
 ```
 
-You can learn more about component attribute inheritance in <span class="custom-link">[Fallthrough Attributes](https://vuejs.org/guide/components/attrs)</span> section.
+You can learn more about component attribute inheritance in <span class="custom-link">[Fallthrough Attributes](/components/attribute/)</span> section.
 
 
 ## Binding Inline Styles​
