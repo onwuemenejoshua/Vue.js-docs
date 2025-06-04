@@ -3,7 +3,9 @@ title: Fallthrough Attributes
 description: This page provides a comprehensive overview of fallthrough attributes in Vue.js.
 ---
 
-> This page assumes you've already read the <span class="custom-link">[Components Basics](https://vuejs.org/guide/essentials/component-basics)</span>. Read that first if you are new to components.
+:::tip[Prerequisite]
+This page assumes you've already read the <span class="custom-link">[Components Basics](https://vuejs.org/guide/essentials/component-basics)</span>. Read that first if you are new to components.
+:::
 
 
 ## Attribute Inheritance​

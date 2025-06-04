@@ -7,7 +7,7 @@ description: The page provides a comprehensive guide on how to declare and manag
 
 ## Props Declaration​
 
-Vue components require explicit props declaration so that Vue knows what external props passed to the component should be treated as fallthrough attributes (which will be discussed in <span class="custom-link">[its dedicated section](https://vuejs.org/guide/components/attrs.html)</span>).
+Vue components require explicit props declaration so that Vue knows what external props passed to the component should be treated as fallthrough attributes (which will be discussed in <span class="custom-link">[its dedicated section](/components/attribute/)</span>).
 
 In SFCs using `<script setup>`, props can be declared using the `defineProps()` macro:
 
@@ -55,7 +55,7 @@ export default {
 
 For each property in the object declaration syntax, the key is the name of the prop, while the value should be the constructor function of the expected type.
 
-This not only documents your component, but will also warn other developers using your component in the browser console if they pass the wrong type. We will discuss more details about <span class="custom-link">[prop validation](https://vuejs.org/guide/components/props.html#prop-validation)</span> further down this page.
+This not only documents your component, but will also warn other developers using your component in the browser console if they pass the wrong type. We will discuss more details about <span class="custom-link">[prop validation](/components/props/#prop-validation)</span> further down this page.
 
 If you are using TypeScript with `<script setup>`, it's also possible to declare props using pure type annotations.
 
@@ -163,7 +163,7 @@ Technically, you can also use camelCase when passing props to a child component 
 <MyComponent greeting-message="hello" />
 ```
 
-We use <span class="custom-link">[PascalCase for component tags](https://vuejs.org/guide/components/registration.html#component-name-casing)</span> when possible because it improves template readability by differentiating Vue components from native elements. However, there isn't as much practical benefit in using camelCase when passing props, so we choose to follow each language's conventions.
+We use <span class="custom-link">[PascalCase for component tags](/components/registration/#component-name-casing)</span> when possible because it improves template readability by differentiating Vue components from native elements. However, there isn't as much practical benefit in using camelCase when passing props, so we choose to follow each language's conventions.
 
 ### Static vs. Dynamic Props​
 
@@ -241,7 +241,7 @@ In the two examples above, we happen to pass string values, but any type of valu
 
 ### Binding Multiple Properties Using an Object​
 
-If you want to pass all the properties of an object as props, you can use <span class="custom-link">[`v-bind`](https://vuejs.org/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes)</span> <span class="custom-link">[without an argument](https://vuejs.org/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes)</span> (`v-bind` instead of `:prop-name`). For example, given a `post` object:
+If you want to pass all the properties of an object as props, you can use <span class="custom-link">[`v-bind`](https://vuejs.org/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes)</span> <span class="custom-link">[without an argument](/essentials/template/#attribute-bindings)</span> (`v-bind` instead of `:prop-name`). For example, given a `post` object:
 
 ```js
 const post = {
@@ -300,7 +300,7 @@ const normalizedSize = computed(() => props.size.trim().toLowerCase());
 
 When objects and arrays are passed as props, while the child component cannot mutate the prop binding, it will be able to mutate the object or array's nested properties. This is because in JavaScript objects and arrays are passed by reference, and it is unreasonably expensive for Vue to prevent such mutations.
 
-The main drawback of such mutations is that it allows the child component to affect parent state in a way that isn't obvious to the parent component, potentially making it more difficult to reason about the data flow in the future. As a best practice, you should avoid such mutations unless the parent and child are tightly coupled by design. In most cases, the child should <span class="custom-link">[emit an event](https://vuejs.org/guide/components/events.html)</span> to let the parent perform the mutation.
+The main drawback of such mutations is that it allows the child component to affect parent state in a way that isn't obvious to the parent component, potentially making it more difficult to reason about the data flow in the future. As a best practice, you should avoid such mutations unless the parent and child are tightly coupled by design. In most cases, the child should <span class="custom-link">[emit an event](/components/events/)</span> to let the parent perform the mutation.
 
 ## Prop Validation​
 

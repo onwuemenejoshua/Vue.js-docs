@@ -6,13 +6,12 @@ description: The page outlines the concept of "composables" in the context of Vu
 import { Aside } from "@astrojs/starlight/components";
 import MousePosition from "../reusability/MousePosition.astro";
 
-<Aside type="note" title="TIP">
-  This section assumes basic knowledge of Composition API. If you have been
-  learning Vue with Options API only, you can set the API Preference to
-  Composition API (using the toggle at the top of the left sidebar) and re-read
-  the [Reactivity Fundamentals](/essentials/reactivity/) and [Lifecycle Hooks](https://vuejs.org/guide/essentials/lifecycle.html) chapters.
-
-</Aside>
+:::note[TIP]
+This section assumes basic knowledge of Composition API. If you have been
+learning Vue with Options API only, you can set the API Preference to
+Composition API (using the toggle at the top of the left sidebar) and re-read
+the <span class="custom-link">[Reactivity Fundamentals](/essentials/reactivity/)</span> and <span class="custom-link">[Lifecycle Hooks](https://vuejs.org/guide/essentials/lifecycle.html)</span> chapters.
+:::
 
 ## What is a "Composable"?​
 
@@ -93,6 +92,8 @@ const { x, y } = useMouse();
   Playground](https://play.vuejs.org/#eNqNkj1rwzAQhv/KocUOGKVzSAIdurVjoQUvJj4XlfgkJNmxMfrvPcmJkkKHLrbu69H7SlrEszFyHFDsxN6drDIeHPrBHGtSvdHWwwKDwzfNHwjQWd1DIbd9jOW3K2qq6aTJxb6pgpl7Dnmg3NS0365YBnLgsTfnxiNHACvUaKe80gTKQeN3sDAIQqjignEhIvKYqMRta1acFVrsKtDEQPLYxuU7cV8Msmg2mdTilIa6gU5p27tYWKKq1c3ENphaPrGFW25+yMXsHWFaFlfiiOSvFIBJjs15QJ5JeWmaL/xYS/Mfpc9YYrPxl52ULOpwhIuiVl9k07Yvsf9VOY+EtizSWfR6xKK6itgkvQ/+fyNs6v4XJXIsPwVL+WprCiL8AEUxw5s=)
 </span>
 
+&nbsp;
+
 As we can see, the core logic remains identical - all we had to do was move it into an external function and return the state that should be exposed. Just like inside a component, you can use the full range of <span class="custom-link">[Composition API functions](https://vuejs.org/api/#composition-api)</span> in composables. The same `useMouse()` functionality can now be used in any component.
 
 The cooler part about composables though, is that you can also nest them: one composable function can call one or more other composable functions. This enables us to compose complex logic using small, isolated units, similar to how we compose an entire application using components. In fact, this is why we decided to call the collection of APIs that make this pattern possible Composition API.
@@ -133,7 +134,7 @@ export function useMouse() {
 
 <Aside type="note" title="TIP">
 
-Each component instance calling `useMouse()` will create its own copies of `x` and `y` state so they won't interfere with one another. If you want to manage shared state between components, read the <span class="custom-link">[State Management](https://vuejs.org/guide/scaling-up/state-management.html)</span> chapter.
+Each component instance calling `useMouse()` will create its own copies of `x` and `y` state so they won't interfere with one another. If you want to manage shared state between components, read the <span class="custom-link">[State Management](/scalling-up/state-management/)</span> chapter.
 
 </Aside>
 
@@ -391,20 +392,8 @@ If you have experience with React, you may notice that this looks very similar t
 
 ## Further Reading​
 
-- <span class="custom-link">
-    [Reactivity In
-    Depth](https://vuejs.org/guide/extras/reactivity-in-depth.html)
-  </span>
-  For a low-level understanding of how Vue's reactivity system works.
-- <span class="custom-link">
-    [State Management](https://vuejs.org/guide/scaling-up/state-management.html)
-  </span>
-  For patterns of managing state shared by multiple components.
-- <span class="custom-link">
-    [Testing
-    Composables](https://vuejs.org/guide/scaling-up/testing.html#testing-composables)
-  </span>
-  Tips on unit testing composables.
-- <span class="custom-link">[VueUse](https://vueuse.org/)</span>: An
-  ever-growing collection of Vue composables. The source code is also a great
-  learning resource.
+- <span class="custom-link"> [Reactivity In Depth](https://vuejs.org/guide/extras/reactivity-in-depth.html)</span>: For a low-level understanding of how Vue's reactivity system works.
+- <span class="custom-link">[State Management](/scalling-up/state-management/)</span>: For patterns of managing state shared by multiple components.
+- <span class="custom-link">[Testing Composables](https://vuejs.org/guide/scaling-up/testing.html#testing-composables)</span>: Tips on unit testing composables.
+- <span class="custom-link">[VueUse](https://vueuse.org/)</span>: An ever-growing
+  collection of Vue composables. The source code is also a great learning resource.

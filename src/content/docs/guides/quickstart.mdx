@@ -15,11 +15,11 @@ description: This page shows you how to get started with the Vue.js
 
 import { Aside } from "@astrojs/starlight/components";
 
-<Aside type="tip" title="Prerequisites">
-  * Familiarity with the command line * Install{" "}
-  <span class="custom-link">[Node.js](https://nodejs.org/)</span>
-  version 18.3 or higher
-</Aside>
+:::tip[Prerequisites]
+
+- Familiarity with the command line
+- Install <span class="custom-link">[Node.js](https://nodejs.org/)</span> version 18.3 or higher
+  :::
 
 In this section we will introduce how to scaffold a Vue <span class="custom-link">[Single Page Application](/extra-topics/ways-of-using-vue/#single-page-application-spa)</span> on your local machine. The created project will be using a build setup based on <span class="custom-link">[Vite](https://vitejs.dev/)</span> and allow us to use Vue <span class="custom-link">[Single-File Components](/scalling-up/single-file-component/)</span> (SFCs).
 
@@ -247,15 +247,13 @@ We can teach the browser where to locate the `vue` import by using <span class="
   [CodePen Demo >](https://codepen.io/vuejs-examples/pen/YzRyRYM)
 </span>
 
+&nbsp;
+
 You can also add entries for other dependencies to the import map - but make sure they point to the ES modules version of the library you intend to use.
 
 <Aside type="note" title="Import Maps Browser Support">
   Import Maps is a relatively new browser feature. Make sure to use a browser
-  within its{" "}
-  <span class="custom-link">
-    [support range](https://caniuse.com/import-maps)
-  </span>
-  . In particular, it is only supported in Safari 16.4+.
+  within its <span class="custom-link">[support range](https://caniuse.com/import-maps)</span>. In particular, it is only supported in Safari 16.4+.
 </Aside>
 
 <Aside type="caution" title="Notes on Production Use">

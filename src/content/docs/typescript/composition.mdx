@@ -4,9 +4,13 @@ description: This page provides an overview of how to use TypeScript with Vue's 
 ---
 
 
-<span class="custom-link">[Watch an interactive video lesson on Scrimba](https://scrimba.com/links/vue-ts-composition-api)</span>
+<span class="custom-link">[**Watch an interactive video lesson on Scrimba**](https://scrimba.com/links/vue-ts-composition-api)</span>
 
->This page assumes you've already read the overview on <span class="custom-link">[Using Vue with TypeScript](/typescript/overview/)</span>.
+&nbsp;
+
+:::tip[Prerequisite]
+This page assumes you've already read the overview on <span class="custom-link">[**Using Vue with TypeScript**](/typescript/overview/)</span>
+:::
 
 
 ## Typing Component Props​
@@ -76,7 +80,7 @@ This limitation has been resolved in 3.3. The latest version of Vue supports ref
 
 ### Props Default Values​
 
-When using type-based declaration, we lose the ability to declare default values for the props. This can be resolved by using <span class="custom-link">[`Reactive Props Destructure`](https://vuejs.org/guide/components/props.html#reactive-props-destructure) <sup>3.5+</sup></span> :
+When using type-based declaration, we lose the ability to declare default values for the props. This can be resolved by using <span class="custom-link">[**`Reactive Props Destructure`**](/components/props/#reactive-props-destructure-35) <sup>3.5+</sup></span> :
 
 
 ```ts
@@ -466,7 +470,7 @@ import type { ComponentPublicInstance } from 'vue'
 const child = useTemplateRef<ComponentPublicInstance>('child')
 ```
 
-In cases where the component referenced is a <span class="custom-link">[generic component](https://vuejs.org/guide/typescript/overview.html#generic-components)</span>, for instance `MyGenericModal`:
+In cases where the component referenced is a <span class="custom-link">[generic component](/typescript/overview/#generic-components)</span>, for instance `MyGenericModal`:
 
 
 ```vue

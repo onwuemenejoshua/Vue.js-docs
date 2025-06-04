@@ -12,7 +12,7 @@ Vue offers two built-in components that can help work with transitions and anima
 Aside from these two components, we can also apply animations in Vue using other techniques such as toggling CSS classes or state-driven animations via style bindings. These additional techniques are covered in the <span class="custom-link">[Animation Techniques](https://vuejs.org/guide/extras/animation.html)</span> chapter.
 
 
-## The <Transition> Component​
+## The `<Transition>` Component​
 
 `<Transition>` is a built-in component: this means it is available in any component's template without having to register it. It can be used to apply enter and leave animations on elements or components passed to it via its default slot. The enter or leave can be triggered by one of the following:
 
@@ -46,11 +46,11 @@ This is an example of the most basic usage:
 
 <span class="custom-link">[Try it in the Playground](https://play.vuejs.org/#eNpVkEFuwyAQRa8yZZNWqu1sunFJ1N4hSzYUjRNUDAjGVJHluxcCipIV/OG/pxEr+/a+TwuykfGogvYEEWnxR2H17F0gWCHgBBtMwc2wy9WdsMIqZ2OuXtwfHErhlcKCb8LyoVoynwPh7I0kzAmA/yxEzsKXMlr9HgRr9Es5BTue3PlskA+1VpFTkDZq0i3niYfU6anRmbqgMY4PZeH8OjwBfHhYIMdIV1OuferQEoZOKtIJ328TgzJhm8BabHR3jeC8VJqusO8/IqCM+CnsVqR3V/mfRxO5amnkCPuK5B+6rcG2fydshks=)</span>
 
-<Aside type="note" title="TIP">
+:::note[TIP]
 `<Transition>` only supports a single element or component as its slot content. If the content is a component, the component must also have only one single root element.
-</Aside>
+:::
 
-When an element in a <Transition> component is inserted or removed, this is what happens:
+When an element in a `<Transition>` component is inserted or removed, this is what happens:
 
 1. Vue will automatically sniff whether the target element has CSS transitions or animations applied. If it does, a number of <span class="custom-link">[CSS transition classes](/builts-in/transition/#css-based-transitions)</span> will be added / removed at appropriate timings.
 
@@ -363,7 +363,7 @@ When using JavaScript-only transitions, it is usually a good idea to add the `:c
 
 With `:css="false"`, we are also fully responsible for controlling when the transition ends. In this case, the `done` callbacks are required for the `@enter` and `@leave` hooks. Otherwise, the hooks will be called synchronously and the transition will finish immediately.
 
-Here's a demo using the [GSAP library](https://gsap.com/) to perform the animations. You can, of course, use any other animation library you want, for example [Anime.js](https://animejs.com/) or [Motion One](https://motion.dev/):
+Here's a demo using the <span class="custom-link">[GSAP library](https://gsap.com/)</span> to perform the animations. You can, of course, use any other animation library you want, for example <span class="custom-link">[Anime.js](https://animejs.com/)</span> or <span class="custom-link">[Motion One](https://motion.dev/)</span>:
 
 
 <span class="custom-link">[Try it in the Playground](https://play.vuejs.org/#eNqNVMtu2zAQ/JUti8I2YD3i1GigKmnaorcCveTQArpQFCWzlkiCpBwHhv+9Sz1qKYckJ3FnlzvD2YVO5KvW4aHlJCGpZUZoB5a7Vt9lUjRaGQcnMLyEM5RGNbDA0sX/VGWpHnB/xEQmmZIWe+zUI9z6m0tnWr7ymbKVzAklQclvvFSG/5COmyWvV3DKJHTdQiRHZN0jAJbRmv9OIA432/UE+jODlKZMuKcErnx8RrazP8woR7I1FEryKaVTU8aiNdRfwWZTQtQwi1HAGF/YB4BTyxNY8JpaJ1go5K/WLTfhdg1Xq8V4SX5Xja65w0ovaCJ8Jvsnpwc+l525F2XH4ac3Cj8mcB3HbxE9qnvFMRzJ0K3APuhIjPefmTTyvWBAGvWbiDuIgeNYRh3HCCDNW+fQmHtWC7a/zciwaO/8NyN3D6qqap5GfVnXAC89GCqt8Bp77vu827+A+53AJrOFzMhQdMnO8dqPpMO74Yx4wqxFtKS1HbBOMdIX4gAMffVp71+Qq2NG4BCIcngBKk8jLOvfGF30IpBGEwcwtO6p9sdwbNXPIadsXxnVyiKB9x83+c3N9WePN9RUQgZO6QQ2sT524KMo3M5Pf4h3XFQ7NwFyZQpuAkML0doEtvEHhPvRDPRkTfq/QNDgRvy1SuIvpFOSDQmbkWTckf7hHsjIzjltkyhqpd5XIVNN5HNfGlW09eAcMp3J+R+pEn7L)</span>

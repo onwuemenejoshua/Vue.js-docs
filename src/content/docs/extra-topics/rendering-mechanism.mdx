@@ -11,7 +11,7 @@ How does Vue take a template and turn it into actual DOM nodes? How does Vue upd
 
 You have probably heard about the term "virtual DOM", which Vue's rendering system is based upon.
 
-The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM. The concept was pioneered by <span class="custom-link">[React](https://reactjs.org/)</span>, and has been adopted in many other frameworks with different implementations, including Vue.
+The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM. The concept was pioneered by <span class="custom-link">[React](https://react.dev/)</span>, and has been adopted in many other frameworks with different implementations, including Vue.
 
 Virtual DOM is more of a pattern than a specific technology, so there is no one canonical implementation. We can illustrate the idea using a simple example:
 
@@ -87,6 +87,7 @@ Quite often there will be parts in a template that do not contain any dynamic bi
 
 <span class="custom-link">[Inspect in Template Explorer](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PiA8IS0tIGNhY2hlZCAtLT5cbiAgPGRpdj5iYXI8L2Rpdj4gPCEtLSBjYWNoZWQgLS0+XG4gIDxkaXY+e3sgZHluYW1pYyB9fTwvZGl2PlxuPC9kaXY+XG4iLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)</span>
 
+&nbsp;
 
 The `foo` and `bar` divs are static - re-creating vnodes and diffing them on each re-render is unnecessary. The renderer creates these vnodes during the initial render, caches them, and reuses the same vnodes for every subsequent re-render. The renderer is also able to completely skip diffing them when it notices the old vnode and the new vnode are the same one.
 
@@ -110,6 +111,7 @@ For a single element with dynamic bindings, we can also infer a lot of informati
 
 <span class="custom-link">[Inspect in Template Explorer](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2IDpjbGFzcz1cInsgYWN0aXZlIH1cIj48L2Rpdj5cblxuPGlucHV0IDppZD1cImlkXCIgOnZhbHVlPVwidmFsdWVcIj5cblxuPGRpdj57eyBkeW5hbWljIH19PC9kaXY+Iiwib3B0aW9ucyI6e319)</span>
 
+&nbsp;
 
 When generating the render function code for these elements, Vue encodes the type of update each of them needs directly in the vnode creation call:
 
