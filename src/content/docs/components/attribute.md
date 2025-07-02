@@ -128,7 +128,7 @@ We want all fallthrough attributes like `class` and `v-on` listeners to be appli
 ```
 
 
-Remember that <span class="custom-link">[`v-bind`](/essentials/template/#dynamically-binding-multiple-attributes)</span> without an <span class="custom-link">[argument](/essentials/template/#dynamically-binding-multiple-attributes)</span> binds all the properties of an object as attributes of the target element.
+Remember that <span class="custom-link">[`v-bind` without an argument](/core-concepts/template/#dynamically-binding-multiple-attributes)</span> binds all the properties of an object as attributes of the target element.
 
 ## Attribute Inheritance on Multiple Root Nodes​
 

@@ -35,7 +35,7 @@ For profiling performance during local development:
 - Chrome DevTools Performance Panel
   - <span class="custom-link">[`app.config.performance`](https://developer.chrome.com/docs/devtools/evaluate-performance/)</span> enables Vue-specific performance markers in Chrome DevTools' performance timeline.
 
-- <span class="custom-link">[Vue DevTools Extension](https://vuejs.org/guide/scaling-up/tooling.html#browser-devtools)</span> also provides a performance profiling feature.Profiling Options​
+- <span class="custom-link">[Vue DevTools Extension](/scalling-up/tooling/#browser-devtools)</span> also provides a performance profiling feature.Profiling Options​
 
 ## Page Load Optimizations​
 
@@ -43,7 +43,7 @@ There are many framework-agnostic aspects for optimizing page load performance -
 
 ### Choosing the Right Architecture​
 
-If your use case is sensitive to page load performance, avoid shipping it as a pure client-side SPA. You want your server to be directly sending HTML containing the content the users want to see. Pure client-side rendering suffers from slow time-to-content. This can be mitigated with <span class="custom-link">[Server-Side Rendering (SSR)](https://vuejs.org/guide/extras/ways-of-using-vue.html#fullstack-ssr)</span> or <span class="custom-link">[Static Site Generation (SSG)](https://vuejs.org/guide/extras/ways-of-using-vue.html#jamstack-ssg)</span>. Check out the <span class="custom-link">[SSR Guide](https://vuejs.org/guide/scaling-up/ssr.html)</span> to learn about performing SSR with Vue. If your app doesn't have rich interactivity requirements, you can also use a traditional backend server to render the HTML and enhance it with Vue on the client.
+If your use case is sensitive to page load performance, avoid shipping it as a pure client-side SPA. You want your server to be directly sending HTML containing the content the users want to see. Pure client-side rendering suffers from slow time-to-content. This can be mitigated with <span class="custom-link">[Server-Side Rendering (SSR)](/extra-topics/ways-of-using-vue/#fullstack--ssr)</span> or <span class="custom-link">[Static Site Generation (SSG)](/extra-topics/ways-of-using-vue/#jamstack--ssg)</span>. Check out the <span class="custom-link">[SSR Guide](https://vuejs.org/guide/scaling-up/ssr.html)</span> to learn about performing SSR with Vue. If your app doesn't have rich interactivity requirements, you can also use a traditional backend server to render the HTML and enhance it with Vue on the client.
 
 If your main application has to be an SPA, but has marketing pages (landing, about, blog), ship them separately! Your marketing pages should ideally be deployed as static HTML with minimal JS, by using SSG.
 

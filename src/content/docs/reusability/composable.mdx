@@ -10,7 +10,7 @@ import MousePosition from "../reusability/MousePosition.astro";
 This section assumes basic knowledge of Composition API. If you have been
 learning Vue with Options API only, you can set the API Preference to
 Composition API (using the toggle at the top of the left sidebar) and re-read
-the <span class="custom-link">[Reactivity Fundamentals](/essentials/reactivity/)</span> and <span class="custom-link">[Lifecycle Hooks](https://vuejs.org/guide/essentials/lifecycle.html)</span> chapters.
+the <span class="custom-link">[Reactivity Fundamentals](/core-concepts/reactivity/)</span> and <span class="custom-link">[Lifecycle Hooks](https://vuejs.org/guide/essentials/lifecycle.html)</span> chapters.
 :::
 
 ## What is a "Composable"?​
@@ -276,7 +276,7 @@ function useFeature(maybeRefOrGetter) {
 
 If your composable creates reactive effects when the input is a ref or a getter, make sure to either explicitly watch the ref / getter with `watch()`, or call `toValue()` inside a `watchEffect()` so that it is properly tracked.
 
-The <span class="custom-link">[useFetch() implementation discussed earlier](https://vuejs.org/guide/reusability/composables.html#accepting-reactive-state)</span> provides a concrete example of a composable that accepts refs, getters and plain values as input argument.
+The <span class="custom-link">[useFetch() implementation discussed earlier](/reusability/composable/#accepting-reactive-state)</span> provides a concrete example of a composable that accepts refs, getters and plain values as input argument.
 
 ### Return Values​
 

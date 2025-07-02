@@ -62,7 +62,7 @@ This will render:
 <div class="active"></div>
 ```
 
-We can also bind to a <span class="custom-link">[computed property](/essentials/computed/)</span> that returns an object. This is a common and powerful pattern:
+We can also bind to a <span class="custom-link">[computed property](/core-concepts/computed/)</span> that returns an object. This is a common and powerful pattern:
 
 ```js
 const isActive = ref(true)

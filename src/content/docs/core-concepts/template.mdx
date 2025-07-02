@@ -24,7 +24,7 @@ The most basic form of data binding is text interpolation using the "Mustache" s
 <span>Message: {{ msg }}</span>
 ```
 
-The mustache tag will be replaced with the value of the `msg` property <span class="custom-link">[from the corresponding component instance](/essentials/reactivity/#declaring-reactive-state)</span>. It will also be updated whenever the `msg` property changes.
+The mustache tag will be replaced with the value of the `msg` property <span class="custom-link">[from the corresponding component instance](/core-concepts/reactivity/#declaring-reactive-state)</span>. It will also be updated whenever the `msg` property changes.
 
 ## Raw HTML
 
@@ -246,7 +246,7 @@ Dynamic argument expressions have some syntax constraints because certain charac
 <a :['foo' + bar]="value"> ... </a>
 ```
 
-If you need to pass a complex dynamic argument, it's probably better to use a <span class="custom-link">[computed property](/essentials/computed/)</span>, which we will cover shortly.
+If you need to pass a complex dynamic argument, it's probably better to use a <span class="custom-link">[computed property](/core-concepts/computed/)</span>, which we will cover shortly.
 
 When using in-DOM templates (templates directly written in an HTML file), you should also avoid naming keys with uppercase characters, as browsers will coerce attribute names into lowercase:
 

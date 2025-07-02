@@ -17,26 +17,24 @@ export default defineConfig({
           label: "Getting Started",
           items: [
             // Each item here is one entry in the navigation menu.
-            { label: "Introduction", slug: "guides/introduction" },
-            { label: "Quick Start", slug: "guides/quickstart" },
+            { label: "Introduction", slug: "getting-started/introduction" },
+            { label: "Quick Start", slug: "getting-started/quickstart" },
+            { label: "Creating An Application", 
+              slug: "getting-started/application" },
           ],
         },
         {
-          label: "Essentials",
+          label: "Core Concepts",
           items: [
-            {
-              label: "Creating An Application",
-              slug: "essentials/application",
-            },
-            { label: "Template Syntax", slug: "essentials/template" },
+            { label: "Template Syntax", slug: "core-concepts/template" },
             {
               label: "Reactivity Fundamentals",
-              slug: "essentials/reactivity",
+              slug: "core-concepts/reactivity",
             },
-            { label: "Computed Properties", slug: "essentials/computed" },
+            { label: "Computed Properties", slug: "core-concepts/computed" },
             {
               label: "Class and Style Bindings",
-              slug: "essentials/class-and-style",
+              slug: "core-concepts/class-and-style",
             },
           ],
         },
